@@ -1,0 +1,79 @@
+<template>
+
+  <q-item
+    @click="selectLayer(layer)"
+    :active="layer.layerId == selectedLayer.layerId"
+    active-class="bg-teal-1 text-grey-8"
+    clickable 
+    v-ripple 
+  >
+    <q-item-section avatar top>
+      <q-img
+        v-if="layer.layerType == 'image'"
+        :src="layer._originalElement?.currentSrc"
+        style="height: 34px; max-width: 34px"
+      />
+      <q-icon v-else name="title" color="black" size="34px" />
+    </q-item-section>
+    
+    <q-item-section top class="gt-sm">
+      <q-item-label class="q-mt-sm" v-if="layer.layerType == 'image'"> изображение </q-item-label>
+      <q-item-label class="q-mt-sm" v-else>{{ layer.text }}</q-item-label>
+    </q-item-section>
+
+    <q-item-section top side>
+      <div class="text-grey-8 q-gutter-xs">
+        <q-btn class="gt-xs" size="12px" flat dense round icon="content_copy" @click.stop="duplicateLayer(layer)" />
+        <q-btn class="gt-xs text-red" size="12px" flat dense round icon="delete" @click.stop="removeLayer(layer)" />
+      </div>
+    </q-item-section>
+  
+  </q-item>
+
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import { mapMutations } from 'vuex'
+
+import CanvasService from '@/services/canvas'
+
+export default {
+  name: 'LayerItem',
+
+  inject: ['ctx'],
+
+  props: ['layer'],
+
+  data: () => ({
+    
+  }),
+
+  computed: {
+    ...mapState('canvas', [
+      'selectedLayer',
+    ]),
+  },
+
+  methods: {
+    ...mapMutations('canvas', [
+      'setSelectedLayer'
+    ]),
+
+    selectLayer(layer){
+      CanvasService.selectLayer(layer, active => {
+        this.setSelectedLayer(active);
+      });
+    },
+
+    removeLayer(layer){
+      CanvasService.removeLayer(layer);
+    },
+
+    duplicateLayer(layer){
+      CanvasService.duplicateLayer(layer);
+    },
+  }
+
+}
+</script>

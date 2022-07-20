@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md q-gutter-sm">
+  <div class="q-pb-md q-gutter-sm">
     <q-btn 
       no-caps
       @click="addTextLayer"
@@ -85,7 +85,10 @@ export default {
       let image = await MediaService.upload(data);
       if (image) {
         this.addImageLayer(image.url);
-        this.pushUploadedImage(image.url);
+        this.pushUploadedImage({
+          id: Date.now(),
+          url: image.url
+        });
       } 
       this.loadingLayer = false;
 

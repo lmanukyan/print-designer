@@ -1,24 +1,24 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-gutter-sm">
     <template v-if="selectedLayer.layerId">
 
       <q-btn-group push spread>
-        <q-btn push icon="vertical_align_center" @click="selectedLayer.centerH()" class="icon-rotate-90">
+        <q-btn push icon="vertical_align_center" @click="selectedLayer.centerH()" class="q-px-none icon-rotate-90">
           <q-tooltip class="bg-purple text-body2" anchor="top middle" self="bottom middle" :offset="[10, 10]">Центрировать по вертикали</q-tooltip>
         </q-btn>
-        <q-btn push icon="vertical_align_center" @click="selectedLayer.centerV()">
+        <q-btn push icon="vertical_align_center" @click="selectedLayer.centerV()" class="q-px-none">
           <q-tooltip class="bg-purple text-body2" anchor="top middle" self="bottom middle" :offset="[10, 10]">Центрировать по горизонтали</q-tooltip>
         </q-btn>
-        <q-btn push icon="flip" @click="setBoolProp('flipX')">
+        <q-btn push icon="flip" @click="setBoolProp('flipX')" class="q-px-none">
           <q-tooltip class="bg-purple text-body2" anchor="top middle" self="bottom middle" :offset="[10, 10]">Отразить по горизонтали</q-tooltip>
         </q-btn>
-        <q-btn push icon="flip" @click="setBoolProp('flipY')" class="icon-rotate-90">
+        <q-btn push icon="flip" @click="setBoolProp('flipY')" class="q-px-none icon-rotate-90">
           <q-tooltip class="bg-purple text-body2" anchor="top middle" self="bottom middle" :offset="[10, 10]">Отразить по вертикали</q-tooltip>
         </q-btn>
-        <q-btn push icon="move_up" @click="bringToFront">
+        <q-btn push icon="move_up" @click="bringToFront" class="q-px-none">
           <q-tooltip class="bg-purple text-body2" anchor="top middle" self="bottom middle" :offset="[10, 10]">Слой вверх</q-tooltip>
         </q-btn>
-        <q-btn push icon="move_up" @click="sendToBack" class="icon-rotate-180">
+        <q-btn push icon="move_up" @click="sendToBack" class="q-px-none icon-rotate-180">
           <q-tooltip class="bg-purple text-body2" anchor="top middle" self="bottom middle" :offset="[10, 10]">Слой вниз</q-tooltip>
         </q-btn>
       </q-btn-group>

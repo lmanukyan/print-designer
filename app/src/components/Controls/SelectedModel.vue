@@ -103,6 +103,7 @@
           icon="shopping_basket" 
           label="Заказать"
           @click="orderModal=true"
+          :disabled="!canOrder()"
         />
       </div>
 
@@ -138,7 +139,6 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-      
     
     
 
@@ -219,6 +219,13 @@ export default {
 
     isValidPhone(value){
       return value.match(/[0-9]/g)?.length == 11
+    },
+
+    canOrder(){
+      return (
+        (!this.selectedModel.clientModel && this.quantity > 0) ||
+        (this.selectedModel.clientModel && this.layers.length > 0)
+      )
     },
 
     quantityHtml(){

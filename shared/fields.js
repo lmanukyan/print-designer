@@ -1,7 +1,6 @@
 export const PriceRangeField = {
   name: 'prices',
   type: 'array',
-  required: true,
   fields: [
     {
       type: 'row',

@@ -103,7 +103,7 @@ export default {
     this.ctx.canvas = new fabric.Canvas(ref, {
       selection: false,
       width: 600,
-      height: 600,
+      height: 560,
     });
 
     this.ctx.canvas.on("before:selection:cleared", () => {

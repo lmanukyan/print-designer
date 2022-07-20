@@ -1,4 +1,4 @@
-import ObjectStorageService from '@/services/object-storage'
+import { ObjectStorage } from '@/utils'
 
 export default {
 
@@ -17,7 +17,7 @@ export default {
       authModalOpened: false,
       customProductModalOpened: false,
 
-      uploadedImages: ObjectStorageService.get('print-uploaded-images', []),
+      uploadedImages: ObjectStorage.get('print-uploaded-images', []),
     }
   },
   
@@ -56,7 +56,13 @@ export default {
     },
     pushUploadedImage (state, payload) {
       state.uploadedImages.push(payload);
-      ObjectStorageService.set('print-uploaded-images', state.uploadedImages);
+      ObjectStorage.set('print-uploaded-images', state.uploadedImages);
+    },
+    removeUploadedImage (state, payload) {
+      state.uploadedImages = state.uploadedImages.filter(
+        (image) => image.id != payload
+      );
+      ObjectStorage.set('print-uploaded-images', state.uploadedImages);
     },
   },
   

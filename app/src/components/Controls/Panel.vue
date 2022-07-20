@@ -12,17 +12,21 @@
     <q-tab name="object" icon="tune" label="Объект" />
   </q-tabs>
 
-  <q-tab-panels 
-    v-model="tab"
-    animated
-  >
-    <q-tab-panel name="product">
-      <SelectedModel />
-    </q-tab-panel>
-    <q-tab-panel name="object">
-      <ObjectDetails />
-    </q-tab-panel>
-  </q-tab-panels>
+  <q-scroll-area style="height: 100%;" :thumbStyle="{ width: '5px' }">
+
+    <q-tab-panels 
+      v-model="tab"
+      animated
+    >
+      <q-tab-panel name="product">
+        <SelectedModel />
+      </q-tab-panel>
+      <q-tab-panel name="object">
+        <ObjectDetails />
+      </q-tab-panel>
+    </q-tab-panels>
+
+  </q-scroll-area>
 
 </template>
 

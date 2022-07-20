@@ -23,8 +23,8 @@ const CanvasService = {
       ), {
       backgroundImageOpacity: 1,
       backgroundImageStretch: false,
-      scaleX: 0.35,
-      scaleY: 0.35,
+      scaleX: Context.canvas.getWidth() * 0.0006,
+      scaleY: Context.canvas.getHeight() * 0.0006,
       top: center.top,
       left: center.left,
       originX: 'center',
@@ -164,7 +164,7 @@ const CanvasService = {
   },
 
   toJSON() {
-    return Context.canvas.toJSON(['layerId', 'layerType', 'mode'])
+    return Context.canvas.toJSON(['layerId', 'layerType', 'mode', '_controlsVisibility'])
   },
 
   loadFromJSON(data, callback = () => { }) {

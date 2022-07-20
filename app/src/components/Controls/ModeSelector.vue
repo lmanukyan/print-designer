@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pa-md row items-start">
+  <div class="q-pa-md row items-start mode-selector">
     
-    <div class="mode-selector" v-if="selectedModelColor">
+    <div v-if="selectedModelColor">
       <div
         @click="setMode('front')" 
         :class="{active: mode == 'front'}"

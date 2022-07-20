@@ -151,12 +151,11 @@ export default {
         ]
       })
 
-      console.log( product );
-
       if(product){
         this.pushModel(product);
         this.setCustomProductModalOpened(false);
         this.setCatalogModalOpened(true);
+        this.reset();
       }
     },
 
@@ -175,7 +174,7 @@ export default {
       data.append('file', file)
 
       let image = await MediaService.upload(data);
-      console.log(image);
+      
       if (image) {
        this[mode] = image; 
       }

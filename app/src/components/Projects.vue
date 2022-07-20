@@ -26,7 +26,7 @@
           <q-item-section avatar>
             <div class="q-gutter-xs">
               <q-btn class="gt-xs" size="12px" flat dense round color="negative" icon="delete" @click.stop="confirmDelete(project.id)" />
-              <q-btn v-if="selectedProjectId == project.id" class="gt-xs" size="12px" flat dense round icon="done" color="primary" />
+              <q-btn v-if="selectedProjectId == project.id" class="gt-xs" size="12px" flat dense round icon="logout" @click.stop="exitProject" />
               <q-btn v-else class="gt-xs text-grey-7" size="12px" flat dense round icon="play_arrow"/>
             </div>
           </q-item-section>
@@ -124,6 +124,7 @@ export default {
       'setAuthModalOpened',
     ]),
     ...mapMutations('product', [
+      'selectFristModel',
       'setSelectedModel',
       'setSelectedModelColor',
     ]),
@@ -160,6 +161,7 @@ export default {
       this.newProjectModal = false;
       this.title = '';
     },
+
     getProjectData(){
       return JSON.stringify({
         mode: this.mode,
@@ -176,6 +178,7 @@ export default {
         this.setProjectsFetched(true);
       }
     },
+
     async launchProjects(id){
       let project = await ProjectService.getProject(id);
       if(project){
@@ -189,6 +192,12 @@ export default {
       }
     },
 
+    exitProject(){
+      this.setSelectedProjectId(null);
+      this.selectFristModel();
+      CanvasService.deleteAllLayers();
+    },
+
     async confirmDelete(id){
       this.confirmModal = true;
       this.deletableId = id;
@@ -198,9 +207,15 @@ export default {
       let result = await ProjectService.delete(this.deletableId);
       if(result){
         this.deleteProject(this.deletableId)
+
+        if(this.selectedProjectId == this.deletableId){
+          this.exitProject();
+        }
       }
     }
   },
+
+
 
   mounted(){
     if(this.user && !this.projectsFetched){

@@ -12,6 +12,11 @@ Notify.registerType('success', {
   color: 'positive',
 });
 
+Notify.registerType('orderSuccess', {
+  color: 'positive',
+  position: 'center'
+});
+
 // To be used on app.use(Quasar, { ... })
 export default {
   plugins: {

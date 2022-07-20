@@ -60,7 +60,7 @@ export default {
     changeMode(){
       CanvasService.changeMode();
     },
-  } 
+  },
 
 }
 </script>

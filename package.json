@@ -5,7 +5,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "nodemon server.js --ignore app/",
     "build": "payload build",
     "serve": "NODE_ENV=production node server.js"
   },

@@ -1,4 +1,5 @@
 import { AuthorizedAccess, OwnerAccess } from '../access'
+import { PriceRangeField, AuthorField } from '../shared/fields'
 
 const Products = {
   slug: 'products',
@@ -22,11 +23,11 @@ const Products = {
       name: 'clientModel',
       type: 'checkbox',
       defaultValue: false,
+      admin: {
+        hidden: true,
+      },
     },
-    {
-      name: 'price',
-      type: 'number',
-    },
+    PriceRangeField,
     {
       name: 'images',
       type: 'array',
@@ -58,15 +59,7 @@ const Products = {
         {'label': 'XXL', value: 'xxl'},
       ]
     },
-    {
-      name: 'author',
-      type: 'relationship',
-      relationTo: 'users',
-      admin: {
-        hidden: true,
-      },
-      defaultValue: ({ user }) => user.id
-    },
+    AuthorField,
   ],
   endpoints: [
     {

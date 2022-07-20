@@ -28,10 +28,14 @@ export default {
     setSelectedModel (state, payload) {
       state.selectedModel = payload;
       state.selectedModelColor = state.selectedModel.images[0];
+      this.dispatch('order/calculatePrice')
     },
     setSelectedModelColor (state, payload) {
       state.selectedModelColor = payload;
-    },    
+    },  
+    selectFristModel(state) {
+      this.commit("product/setSelectedModel", state.models[0])
+    }  
   },
 
   getters: {

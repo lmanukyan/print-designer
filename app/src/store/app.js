@@ -35,9 +35,6 @@ export default {
       state.projects = state.projects.filter(
         (project) => project.id != payload
       )
-      if(state.selectedProjectId == payload){
-        state.selectedProjectId = null
-      }
     },
     setSelectedProjectId (state, payload) {
       state.selectedProjectId = payload

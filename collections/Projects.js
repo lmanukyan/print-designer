@@ -1,4 +1,5 @@
 import { AuthorizedAccess, OwnerAccess } from '../access'
+import { AuthorField } from '../shared/fields'
 
 const Projects = {
   slug: 'projects',
@@ -27,15 +28,7 @@ const Projects = {
         readOnly: true,
       }
     },
-    {
-      name: 'author',
-      type: 'relationship',
-      relationTo: 'users',
-      admin: {
-        hidden: true,
-      },
-      defaultValue: ({ user }) => user.id
-    },
+    AuthorField,
   ],
   hooks: {
     beforeRead: [

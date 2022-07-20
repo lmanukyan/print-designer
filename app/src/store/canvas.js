@@ -17,6 +17,7 @@ export default {
     syncLayers (state, payload) {
       console.log('syncLayers: ', payload);
       state.layers = payload
+      this.dispatch('order/calculatePrice')
     },
     setSelectedLayer (state, payload) {
       state.controlTab = 'object';
@@ -31,17 +32,17 @@ export default {
 }
 
 const SelectedLayerInitialProps = () => ({
-    layerId: null,
-    layerType: null,
-    text: null,
-    fill: null,
-    fontSize: null,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    underline: false,
-    fontFamily: null,
-    angle: 0,
-    flipX: false,
-    flipY: false,
-    scaleAndZoom: 0
-  });
+  layerId: null,
+  layerType: null,
+  text: null,
+  fill: null,
+  fontSize: null,
+  fontWeight: 'normal',
+  fontStyle: 'normal',
+  underline: false,
+  fontFamily: null,
+  angle: 0,
+  flipX: false,
+  flipY: false,
+  scaleAndZoom: 0
+});

@@ -10,9 +10,8 @@ import Orders from './collections/Orders';
 import Products from './collections/Products';
 import Projects from './collections/Projects';
 
-
 export default buildConfig({
-  serverURL: 'http://localhost:3050',
+  serverURL: process.env.PAYLOAD_DOMAIN,
   admin: {
     user: Users.slug,
   },

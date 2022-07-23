@@ -18,7 +18,7 @@
     <input ref="fileInput" type="file" @change="uploadImage" accept="image/*" class="hidden" />
   </div>
 
-  <q-list bordered separator>
+  <q-list separator>
     <template v-for="layer in layers" :key="layer.layerId">
       <LayerItem :layer="layer" v-if="layer.mode == mode" />
     </template>

@@ -13,7 +13,7 @@
         </q-bar>
           
         <q-card-section>
-          <div class="q-pa-md row items-start q-gutter-md">
+          <div class="row items-start q-gutter-md">
             <q-card v-for="model in models" :key="model.name" class="col-3">
               <q-card-section>
                   <div class="text-h6">{{ model.title }}</div>
@@ -117,6 +117,7 @@ export default {
     img {
       height: 100%;
       width: auto;
+      max-width: 300px;
     }
 }
 </style>

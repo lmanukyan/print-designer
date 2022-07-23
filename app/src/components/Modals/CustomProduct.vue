@@ -40,7 +40,7 @@
                       </q-item-section>
                     </q-item>
 
-                    <div class="catalog-image" v-if="front?.id">
+                    <div class="custom-model-image" v-if="front?.id">
                       <img :src="front.url">
                     </div>
                     <q-skeleton v-else height="200px" square />
@@ -59,7 +59,7 @@
                       </q-item-section>
                     </q-item>
                     
-                    <div class="catalog-image" v-if="back?.id">
+                    <div class="custom-model-image" v-if="back?.id">
                       <img :src="back.url">
                     </div>
                     <q-skeleton v-else height="200px" square />
@@ -186,7 +186,7 @@ export default {
 </script>
 
 <style lang="scss">
-.catalog-image {
+.custom-model-image {
     display: flex;
     width: 100%;
     height: 200px;
@@ -196,6 +196,7 @@ export default {
     img {
       height: 100%;
       width: auto;
+      max-width: 400px;
     }
 }
 </style>

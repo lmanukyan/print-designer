@@ -19,6 +19,7 @@ payload.init({
   email: {
     fromName: process.env.SMTP_NAME,
     fromAddress: process.env.SMTP_USER,
+    managerEmail: process.env.MANAGER_EMAIL,
     logMockCredentials: true,
     transport,
   },

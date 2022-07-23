@@ -1,4 +1,5 @@
-import { AuthorizedAccess, OwnerAccess } from '../access'
+import OrderCreated from '../hooks/order-created'
+import { OwnerAccess } from '../access'
 import { AuthorField } from '../shared/fields'
 
 const Orders = {
@@ -13,6 +14,11 @@ const Orders = {
     read: OwnerAccess,
     update: OwnerAccess,
     delete: OwnerAccess,
+  },
+  hooks: {
+    afterChange: [
+      OrderCreated
+    ]
   },
   fields: [
     {

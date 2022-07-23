@@ -6,7 +6,45 @@
   <title>Welcome Email</title>
 </head>
 <body>
-  <h2>Hello {{name}}! </h2>
-  <p>We're glad to have you on board at {{company}}. </p>
+  <h2>{{ title }}</h2>
+
+  <table>
+  
+    <tr>
+      <td>Чя модель:</td>
+      <td>{{ 'клиента' if clientModel else 'наш' }}</td>
+    </tr>
+
+    <tr>
+      <td>Телефон:</td>
+      <td>{{ phone }}</td>
+    </tr>
+
+    <tr>
+      <td>Цена:</td>
+      <td>{{ price }}</td>
+    </tr>
+
+    <tr>
+      <td>Срочность:</td>
+      <td>{{ 'да' if urgency else 'нет' }}</td>
+    </tr>
+
+    {% if not clientModel %}    
+
+    <tr>
+      <td>Качество:</td>
+      <td>{{ quality }}</td>
+    </tr>
+
+    <tr>
+      <td>Размер:</td>
+      <td>{{ quantity | safe }}</td>
+    </tr>
+
+    {% endif %}
+    
+  </table>
+
 </body>
 </html>

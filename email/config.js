@@ -1,16 +1,15 @@
 const nodemailer = require('nodemailer');
 const nunjucks = require('nunjucks');
-const path = require('path');
 
 // Email config
 const transport = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: process.env.SMTP_POST,
+  port: process.env.SMTP_PORT,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
   },
-  secure: process.env.SMTP_POST == 465,
+  secure: process.env.SMTP_PORT == 465,
   tls: {
     rejectUnauthorized: false,
   },

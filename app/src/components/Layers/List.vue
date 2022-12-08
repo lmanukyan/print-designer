@@ -18,11 +18,12 @@
     <input ref="fileInput" type="file" @change="uploadImage" accept="image/*" class="hidden" />
   </div>
 
-  <q-list separator>
+  <q-list bordered separator class="scroll-area">
     <template v-for="layer in layers" :key="layer.layerId">
       <LayerItem :layer="layer" v-if="layer.mode == mode" />
     </template>
     <LoadingItem v-if="loadingLayer" />
+    <q-separator />
   </q-list>
 
 </template>

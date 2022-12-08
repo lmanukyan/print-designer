@@ -18,7 +18,7 @@
       />
     </div>
 
-    <q-list bordered separator dense class="q-mt-lg">
+    <q-list bordered separator dense class="q-mt-lg scroll-area">
       <template v-for="project in projects" :key="project.id">
 
         <q-item clickable v-ripple @click="launchProjects(project.id)">
@@ -33,6 +33,7 @@
         </q-item>
 
       </template>
+      <q-separator />
     </q-list>
 
     <q-dialog v-model="confirmModal" persistent>

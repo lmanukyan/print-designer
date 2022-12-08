@@ -15,7 +15,9 @@ const transport = nodemailer.createTransport({
   },
 });
 
-nunjucks.configure('email/templates');
+nunjucks.configure('email/templates', {
+  noCache: true
+});
 
 transport.use('compile', (mail, callback) => {
 

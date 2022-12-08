@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Welcome Email</title>
+  <title>Email - Order created</title>
 </head>
 <body>
   <h2>{{ title }}</h2>
@@ -45,6 +45,12 @@
     {% endif %}
     
   </table>
+
+  <ul>
+    {% for layer in json.canvasData.objects %}
+      <li>{{ layer.type }}</li>
+    {% endfor %}
+  </ul>
 
 </body>
 </html>

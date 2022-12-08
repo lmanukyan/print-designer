@@ -32,10 +32,10 @@
     <q-page-container>
       <q-page padding>
         <div class="row">
-          <div class="col">
+          <div class="col-md-3 col-sm-12">
             <LayersPanel />
           </div>
-          <div class="col-6">
+          <div class="col-md-6 col-sm-12 canvas-column ">
             <div class="canvas-designer">
               <ModeSelector />
               <div class="flex flex-center">
@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md-3 col-sm-12 order-sm-last">
             <ControlsPanel />
           </div>
         </div>
@@ -211,5 +211,12 @@ export default {
   margin: 0 10px;
   position: sticky;
   top: 55px;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .canvas-column {
+    order: -1;
+    margin-bottom: 30px;
+  }
 }
 </style>

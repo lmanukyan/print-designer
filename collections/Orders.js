@@ -1,3 +1,4 @@
+import nunjucks from 'nunjucks';
 import OrderCreated from '../hooks/order-created'
 import { OwnerAccess } from '../access'
 import { AuthorField } from '../shared/fields'
@@ -89,6 +90,26 @@ const Orders = {
     },
     AuthorField,
   ],
+
+  endpoints: [
+    {
+      path: '/:id/print',
+      method: 'get',
+      handler: async (req, res, next) => {
+        const order = await req.payload.findByID({
+          collection: 'orders', 
+          id: req.params.id
+        });
+
+        const html = nunjucks.render(`order-created.njk`, {
+          ...order,
+          json: JSON.parse(order.json)
+        });
+
+        res.send(html);
+      }
+    }
+  ]
 }
 
 export default Orders;

@@ -8,21 +8,20 @@ export const Context = {
 };
 
 const CanvasService = {
-  captures: {
-    front: null,
-    back: null,
-  },
-
   drawSelectedModel() {
     const center = Context.canvas.getCenter();
     Context.canvas.setBackgroundImage(
       store.getters["product/selectedModelColorUrl"],
-      Context.canvas.renderAll.bind(Context.canvas),
+      (data) => {
+        Context.canvas.backgroundImage.scaleX =
+          (Context.canvas.getWidth() / data.width) * 0.9;
+        Context.canvas.backgroundImage.scaleY =
+          (Context.canvas.getHeight() / data.height) * 0.9;
+        return Context.canvas.renderAll();
+      },
       {
         backgroundImageOpacity: 1,
         backgroundImageStretch: false,
-        scaleX: Context.canvas.getWidth() * 0.0006,
-        scaleY: Context.canvas.getHeight() * 0.0006,
         top: center.top,
         left: center.left,
         originX: "center",
@@ -201,7 +200,12 @@ const CanvasService = {
 
         canvas.setBackgroundImage(
           store.state.product.selectedModelColor[mode].url,
-          () => {
+          (data) => {
+            canvas.backgroundImage.scaleX =
+              (canvas.getWidth() / data.width) * 0.9;
+            canvas.backgroundImage.scaleY =
+              (canvas.getHeight() / data.height) * 0.9;
+
             canvas
               .renderAll()
               .getElement()

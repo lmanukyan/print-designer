@@ -20,7 +20,7 @@ export default async function OrderCreated({ doc, req,  operation }) {
       collection: 'media',
       where: {
         id: {
-          in: [doc.front, doc.back]
+          in: [doc.front.id, doc.back.id]
         }
       }
     });

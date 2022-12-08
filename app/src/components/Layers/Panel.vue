@@ -12,7 +12,7 @@
     <q-tab name="project" label="Проект" />
   </q-tabs>
 
-  <q-scroll-area style="height: 100%;" :thumbStyle="{ width: '5px' }">
+  <q-scroll-area style="height: 650px;" :thumbStyle="{ width: '5px' }">
 
     <q-tab-panels
       v-model="tab"

@@ -209,5 +209,7 @@ export default {
 .canvas-designer {
   box-shadow: 0 0 5px #d9d9d9;
   margin: 0 10px;
+  position: sticky;
+  top: 55px;
 }
 </style>

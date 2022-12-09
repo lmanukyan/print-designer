@@ -87,20 +87,42 @@
           :step="1"
           label
           label-always
+          :markers="90"
+          :marker-labels="[
+            { value: 0, label: '0' },
+            { value: 90, label: '90' },
+            { value: 180, label: '180' },
+            { value: 270, label: '270' },
+            { value: 360, label: '360' },
+          ]"
           color="primary"
-        />
+        >
+        <template v-slot:marker-label-group="scope">
+          <div class="slider-markers">
+            <div
+              v-for="marker in scope.markerList"
+              :key="marker.index"
+              :class="`marker-${marker.value}`"
+              @click="selectedLayer.angle = marker.value"
+            >
+              {{ marker.value }}
+            </div>
+          </div>
+        </template>
+        </q-slider>
       </div>
 
       <template v-if="selectedLayer.layerType == 'text'">
         <p class="text-subtitle1 q-pb-md">Размер</p>
         <div class="q-px-sm">
           <q-slider
-            v-model="selectedLayer.fontSize"
-            :min="10"
-            :max="200"
-            :step="1"
+            v-model="scale"
+            :min="0"
+            :max="5"
+            :step="0.1"
             label
             label-always
+            :label-value="getFontSize()"
             color="primary"
           />
         </div>
@@ -244,6 +266,7 @@ export default {
 
   data: () => ({
     fonts: AvailableFontFamilies,
+    scale: 1,
   }),
 
   computed: {
@@ -260,12 +283,19 @@ export default {
   watch: {
     selectedLayer: {
       handler() {
+        this.scale = this.selectedLayer.scaleX;
+        this.selectedLayer.angle = parseInt(this.selectedLayer.angle);
+
         if (this.ctx.canvas.getActiveObject()) {
           this.ctx.canvas.getActiveObject().dirty = true;
           this.ctx.canvas.renderAll();
         }
       },
       deep: true,
+    },
+    scale(newScale) {
+      this.selectedLayer.scaleX = newScale;
+      this.selectedLayer.scaleY = newScale;
     },
   },
 
@@ -299,6 +329,13 @@ export default {
       this.ctx.canvas.sendToBack(this.ctx.canvas.getActiveObject());
       this.ctx.canvas.renderAll();
     },
+    getFontSize() {
+      return (
+        parseInt(
+          this.ctx.canvas.getActiveObject().scaleX * CanvasService.fontSize
+        ) + "px"
+      );
+    },
   },
 };
 </script>
@@ -312,5 +349,30 @@ export default {
 }
 .color-picker {
   max-width: 100% !important;
+}
+.slider-markers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      position: relative;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    .marker-0 {
+        left: -1px;
+    }
+    .marker-90 {
+        left: 7px;
+    }
+    .marker-180 {
+        left: 11px;
+    }
+    .marker-270 {
+        left: 11px;
+    }
+    .marker-360 {
+        left: 10px;
+    }
 }
 </style>

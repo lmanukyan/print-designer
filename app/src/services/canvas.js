@@ -8,6 +8,9 @@ export const Context = {
 };
 
 const CanvasService = {
+
+  fontSize: 24,
+
   drawSelectedModel() {
     const center = Context.canvas.getCenter();
     Context.canvas.setBackgroundImage(
@@ -39,10 +42,10 @@ const CanvasService = {
       layerType: "text",
       mode: store.state.canvas.mode,
       fill: "#000000",
-      fontSize: 40,
+      fontSize: this.fontSize,
       fontFamily: "Roboto",
-      scaleX: 0.6,
-      scaleY: 0.6,
+      scaleX: 1,
+      scaleY: 1,
       top: center.top,
       left: center.left,
       originX: "center",
@@ -56,10 +59,6 @@ const CanvasService = {
         mb: false,
         ml: false,
         mr: false,
-        bl: false,
-        br: false,
-        tl: false,
-        tr: false,
       },
     });
     Context.canvas.add(textLayer);

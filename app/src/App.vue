@@ -121,6 +121,12 @@ export default {
       this.handleSelection(event);
     });
 
+    this.ctx.canvas.on('object:modified', (event) => {
+      if(event.action === 'scale' || event.action === 'rotate'){
+        this.selectedLayer.dirty = true;
+      }
+    });
+
     this.ctx.canvas.on({
       "object:added": () => this.syncLayers(this.ctx.canvas.getObjects()),
       "object:removed": () => this.syncLayers(this.ctx.canvas.getObjects()),

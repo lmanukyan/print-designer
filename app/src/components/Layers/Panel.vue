@@ -25,14 +25,14 @@
               <q-img :src="image.url" style="height: 34px; max-width: 34px" />
             </q-item-section>
 
-            <q-item-section top class="gt-sm">
+            <q-item-section top>
               <q-item-label class="q-mt-sm"> изображение </q-item-label>
             </q-item-section>
 
             <q-item-section avatar side>
               <div class="text-grey-8 q-gutter-xs">
                 <q-btn
-                  class="gt-xs text-red"
+                  class="text-red"
                   size="12px"
                   flat
                   dense
@@ -40,7 +40,7 @@
                   icon="delete"
                   @click.stop="removeUploadedImage(image.id)"
                 />
-                <q-btn class="gt-xs" size="12px" flat dense round icon="add" />
+                <q-btn size="12px" flat dense round icon="add" />
               </div>
             </q-item-section>
           </q-item>

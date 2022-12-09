@@ -32,13 +32,13 @@
     <q-page-container>
       <q-page padding>
         <div class="row">
-          <div class="col-md-3 col-sm-12">
+          <div class="col-md-3 col-sm-12 sm-full-width">
             <LayersPanel />
           </div>
           <div class="col-md-6 col-sm-12 canvas-column ">
             <div class="canvas-designer">
               <ModeSelector />
-              <div class="flex flex-center">
+              <div class="flex flex-center canvas-wrapper">
                 <canvas ref="canvas"></canvas>
               </div>
             </div>
@@ -208,15 +208,32 @@ export default {
 <style lang="scss">
 .canvas-designer {
   box-shadow: 0 0 5px #d9d9d9;
-  margin: 0 10px;
   position: sticky;
   top: 55px;
+  @media (min-width: $breakpoint-sm) {
+    margin: 0 10px;
+  }
+  @media (max-width: $breakpoint-sm) {
+    padding-top: 50px;
+  }
 }
 
-@media (max-width: $breakpoint-sm) {
-  .canvas-column {
+.canvas-column {
+  width: 100%;
+  @media (max-width: $breakpoint-sm) {
     order: -1;
     margin-bottom: 30px;
+  }
+}
+@media (max-width: $breakpoint-xs) {
+  .canvas-wrapper {
+    width: calc(100vw - 20px);
+    overflow: hidden;
+  }
+  .canvas-container {
+    position: relative;
+    left: calc(25%);
+    transform: translateX(-50%);
   }
 }
 </style>

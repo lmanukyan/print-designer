@@ -16,15 +16,15 @@
       <q-icon v-else name="title" color="black" size="34px" />
     </q-item-section>
     
-    <q-item-section top class="gt-sm">
+    <q-item-section top >
       <q-item-label class="q-mt-sm" v-if="layer.layerType == 'image'"> изображение </q-item-label>
       <q-item-label class="q-mt-sm layer-title" v-else>{{ layer.text }}</q-item-label>
     </q-item-section>
 
     <q-item-section avatar side>
       <div class="text-grey-8 q-gutter-xs">
-        <q-btn class="gt-xs" size="12px" flat dense round icon="content_copy" @click.stop="duplicateLayer(layer)" />
-        <q-btn class="gt-xs text-red" size="12px" flat dense round icon="delete" @click.stop="removeLayer(layer)" />
+        <q-btn size="12px" flat dense round icon="content_copy" @click.stop="duplicateLayer(layer)" />
+        <q-btn class="text-red" size="12px" flat dense round icon="delete" @click.stop="removeLayer(layer)" />
       </div>
     </q-item-section>
   

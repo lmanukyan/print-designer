@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md row items-start mode-selector">
     
-    <div v-if="selectedModelColor">
+    <div v-if="selectedModelColor" class="selectors-wrapper">
       <div
         @click="setMode('front')" 
         :class="{active: mode == 'front'}"
@@ -69,6 +69,7 @@ export default {
 .mode-selector {
   position: absolute;
   z-index: 9;
+  top: 0;
 
   img {
     max-width: 60px;
@@ -86,6 +87,10 @@ export default {
 
     &.active {
       border-color: $primary;
+    }
+    @media (max-width: $breakpoint-sm) {
+      float: left;
+      margin-right: 10px;
     }
   }
     

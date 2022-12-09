@@ -7,3 +7,20 @@
     overflow-y: auto
     @media (min-width: $breakpoint-sm)
         height: calc(100vh - 200px)
+
+
+.sm-full-width
+    @media (max-width: $breakpoint-sm)
+        width: 100%
+
+
+.grid-4
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 16px
+    @media (min-width: $breakpoint-xs)
+        grid-template-columns: 1fr 1fr
+    @media (min-width: $breakpoint-sm)
+        grid-template-columns: 1fr 1fr 1fr
+    @media (min-width: $breakpoint-md)
+        grid-template-columns: 1fr 1fr 1fr 1fr

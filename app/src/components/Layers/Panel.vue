@@ -13,11 +13,11 @@
   </q-tabs>
 
   <q-tab-panels v-model="tab" animated>
-    <q-tab-panel name="layers">
+    <q-tab-panel name="layers" class="q-px-none">
       <LayersList />
     </q-tab-panel>
 
-    <q-tab-panel name="images">
+    <q-tab-panel name="images" class="q-px-none">
       <q-list bordered separator class="scroll-area">
         <template v-for="image in uploadedImages" :key="image.id">
           <q-item @click="addToLayers(image.url)" clickable v-ripple>
@@ -49,7 +49,7 @@
       </q-list>
     </q-tab-panel>
 
-    <q-tab-panel name="project">
+    <q-tab-panel name="project" class="q-px-none">
       <ProjectsTab />
     </q-tab-panel>
   </q-tab-panels>

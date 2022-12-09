@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 col-sm-12 order-sm-last">
+          <div class="col-md-3 col-sm-12 order-sm-last sm-full-width">
             <ControlsPanel />
           </div>
         </div>
@@ -104,7 +104,9 @@ export default {
       selection: false,
       width: 600,
       height: 560,
+      allowTouchScrolling: true
     });
+
 
     this.ctx.canvas.on("before:selection:cleared", () => {
       this.resetSelectedLayer();

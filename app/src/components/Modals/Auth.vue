@@ -13,7 +13,7 @@
       </q-bar>
 
       <q-card-section>
-        <div class="row  justify-center">
+        <div class="row justify-center">
           <div class="col-md-4 col-sm-10">
             <q-tabs v-model="tab">
               <q-tab name="login" label="Войти" />

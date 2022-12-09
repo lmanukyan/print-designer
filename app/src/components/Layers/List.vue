@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pb-md q-gutter-sm">
+  <div class="q-pb-md q-px-2">
     <q-btn 
       no-caps
       @click="addTextLayer"
@@ -7,6 +7,7 @@
       text-color="black"
       icon="add"
       label="текст" 
+      class="q-mr-sm"
     />
     <q-btn
       no-caps
@@ -99,3 +100,11 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+.scroll-area {
+  @media (max-width: $breakpoint-xs) {
+    min-height: 100px;
+  }
+}
+</style>

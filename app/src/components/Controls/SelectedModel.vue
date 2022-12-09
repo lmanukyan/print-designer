@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pb-md q-gutter-sm">
+  <div class="q-pb-md q-px-2">
     <q-btn
       @click="setCatalogModalOpened(true)"
       no-caps
@@ -7,6 +7,7 @@
       icon="shopping_bag"
       text-color="black"
       label="каталог"
+      class="q-mr-sm"
     />
     <q-btn
       @click="makeCustomModel()"

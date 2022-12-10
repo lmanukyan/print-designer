@@ -95,6 +95,6 @@ export default {
   width: 116px;
 }
 .active-layer {
-    color: #000 !important;
+  color: #000 !important;
 }
 </style>

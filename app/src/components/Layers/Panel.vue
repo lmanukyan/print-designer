@@ -45,7 +45,7 @@
             </q-item-section>
           </q-item>
         </template>
-        <q-separator />
+        <q-separator v-show="uploadedImages.length" />
       </q-list>
     </q-tab-panel>
 

@@ -8,7 +8,6 @@ export const Context = {
 };
 
 const CanvasService = {
-
   fontSize: 24,
 
   drawSelectedModel() {
@@ -50,9 +49,11 @@ const CanvasService = {
       left: center.left,
       originX: "center",
       originY: "center",
-      borderColor: "#00d1b2",
-      cornerColor: "#3e8ed0",
-      strokeWidth: 10,
+      borderColor: "#ffe0b2",
+      cornerColor: "#ffe0b2",
+      strokeWidth: 20,
+      cornerSize: 10,
+      transparentCorners: false,
       globalCompositeOperation: "source-atop",
       _controlsVisibility: {
         mt: false,
@@ -76,9 +77,11 @@ const CanvasService = {
           mode: store.state.canvas.mode,
           originX: "middle",
           originY: "middle",
-          borderColor: "#00d1b2",
-          cornerColor: "#00d1b2",
-          strokeWidth: 10,
+          borderColor: "#ffe0b2",
+          cornerColor: "#ffe0b2",
+          strokeWidth: 20,
+          cornerSize: 10,
+          transparentCorners: false,
           _controlsVisibility: {
             mt: false,
             mb: false,

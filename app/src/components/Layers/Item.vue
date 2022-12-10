@@ -1,11 +1,10 @@
 <template>
-
   <q-item
     @click="selectLayer(layer)"
     :active="layer.layerId == selectedLayer.layerId"
-    active-class="bg-teal-1 text-grey-8"
-    clickable 
-    v-ripple 
+    active-class="bg-orange-2 text-black-8 active-layer"
+    clickable
+    v-ripple
   >
     <q-item-section avatar top>
       <q-img
@@ -15,67 +14,77 @@
       />
       <q-icon v-else name="title" color="black" size="34px" />
     </q-item-section>
-    
-    <q-item-section top >
-      <q-item-label class="q-mt-sm" v-if="layer.layerType == 'image'"> изображение </q-item-label>
-      <q-item-label class="q-mt-sm layer-title" v-else>{{ layer.text }}</q-item-label>
+
+    <q-item-section top>
+      <q-item-label class="q-mt-sm" v-if="layer.layerType == 'image'">
+        изображение
+      </q-item-label>
+      <q-item-label class="q-mt-sm layer-title" v-else>{{
+        layer.text
+      }}</q-item-label>
     </q-item-section>
 
     <q-item-section avatar side>
       <div class="text-grey-8 q-gutter-xs">
-        <q-btn size="12px" flat dense round icon="content_copy" @click.stop="duplicateLayer(layer)" />
-        <q-btn class="text-red" size="12px" flat dense round icon="delete" @click.stop="removeLayer(layer)" />
+        <q-btn
+          size="12px"
+          flat
+          dense
+          round
+          icon="content_copy"
+          @click.stop="duplicateLayer(layer)"
+        />
+        <q-btn
+          class="text-red"
+          size="12px"
+          flat
+          dense
+          round
+          icon="delete"
+          @click.stop="removeLayer(layer)"
+        />
       </div>
     </q-item-section>
-  
   </q-item>
-
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { mapMutations } from 'vuex'
+import { mapState } from "vuex";
+import { mapMutations } from "vuex";
 
-import CanvasService from '@/services/canvas'
+import CanvasService from "@/services/canvas";
 
 export default {
-  name: 'LayerItem',
+  name: "LayerItem",
 
-  inject: ['ctx'],
+  inject: ["ctx"],
 
-  props: ['layer'],
+  props: ["layer"],
 
-  data: () => ({
-    
-  }),
+  data: () => ({}),
 
   computed: {
-    ...mapState('canvas', [
-      'selectedLayer',
-    ]),
+    ...mapState("canvas", ["selectedLayer"]),
   },
 
   methods: {
-    ...mapMutations('canvas', [
-      'setSelectedLayer'
-    ]),
+    ...mapMutations("canvas", ["setSelectedLayer"]),
 
-    selectLayer(layer){
-      CanvasService.selectLayer(layer, active => {
+    selectLayer(layer) {
+      CanvasService.selectLayer(layer, (active) => {
         this.setSelectedLayer(active);
       });
     },
 
-    removeLayer(layer){
+    removeLayer(layer) {
       CanvasService.removeLayer(layer);
     },
 
-    duplicateLayer(layer){
+    duplicateLayer(layer) {
       CanvasService.duplicateLayer(layer);
     },
-  }
-
-}
+  },
+};
 </script>
 
 <style lang="scss">
@@ -84,5 +93,8 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 116px;
+}
+.active-layer {
+    color: #000 !important;
 }
 </style>

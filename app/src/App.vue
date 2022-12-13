@@ -243,8 +243,9 @@ export default {
     position: relative;
     left: 50%;
     margin-left: -100%;
-    zoom: 0.7;
-    margin-top: 20px;
+    margin-top: calc(25% * -0.7);
+    margin-bottom: calc(30% * -0.7);
+    transform: scale(0.7);
   }
 }
 </style>

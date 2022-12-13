@@ -18,7 +18,7 @@
     />
   </div>
 
-  <q-card class="my-card" v-if="selectedModel">
+  <q-card class="q-mx-2" v-if="selectedModel">
     <q-card-section>
       <div class="text-h6">{{ selectedModel.title }}</div>
     </q-card-section>

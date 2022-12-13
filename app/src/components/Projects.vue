@@ -50,6 +50,9 @@
           </q-item-section>
         </q-item>
       </template>
+      <q-item v-show="!projects.length">
+        <q-item-section>У вас еще нет сохраненных проектов.</q-item-section>
+      </q-item>
       <q-separator v-show="projects.length" />
     </q-list>
 

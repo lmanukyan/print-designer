@@ -188,6 +188,7 @@ export default {
       let user = await UserService.getProfile();
       if (user) {
         this.setUser(user);
+        this.setCatalogModalOpened(true);
       } else {
         this.loadProductModels(null);
       }
@@ -203,7 +204,6 @@ export default {
     async loadProductModels(userId) {
       let models = await ProductService.getModels(userId);
       this.setModels(models);
-      this.setCatalogModalOpened(true);
     },
 
     async logout() {

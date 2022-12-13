@@ -164,6 +164,7 @@ export default {
       "setUser",
       "setControlTab",
       "setAuthModalOpened",
+      "setCatalogModalOpened",
     ]),
     ...mapMutations("order", [
       "setPricing",
@@ -201,8 +202,8 @@ export default {
 
     async loadProductModels(userId) {
       let models = await ProductService.getModels(userId);
-      console.log(models);
       this.setModels(models);
+      this.setCatalogModalOpened(true);
     },
 
     async logout() {

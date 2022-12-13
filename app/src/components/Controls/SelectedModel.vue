@@ -23,8 +23,6 @@
       <div class="text-h6">{{ selectedModel.title }}</div>
     </q-card-section>
 
-    <q-img :src="selectedModel.images[0].front.url" />
-
     <q-card-section>
       <p class="text-subtitle1">Цвет</p>
       <q-card-actions>

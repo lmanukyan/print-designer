@@ -13,6 +13,9 @@
       </q-bar>
 
       <q-card-section>
+
+        <h4 class="text-center q-mt-lg">Выберите продукт</h4>
+
         <div class="grid-4">
           <q-card
             v-for="model in models"

@@ -9,7 +9,7 @@
           class="q-px-none icon-rotate-90"
         >
           <q-tooltip
-            class="bg-purple text-body2"
+            class="bg-blue-8 text-body2"
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
@@ -23,7 +23,7 @@
           class="q-px-none"
         >
           <q-tooltip
-            class="bg-purple text-body2"
+            class="bg-blue-8 text-body2"
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
@@ -32,7 +32,7 @@
         </q-btn>
         <q-btn push icon="flip" @click="setBoolProp('flipX')" class="q-px-none">
           <q-tooltip
-            class="bg-purple text-body2"
+            class="bg-blue-8 text-body2"
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
@@ -46,7 +46,7 @@
           class="q-px-none icon-rotate-90"
         >
           <q-tooltip
-            class="bg-purple text-body2"
+            class="bg-blue-8 text-body2"
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
@@ -55,7 +55,7 @@
         </q-btn>
         <q-btn push icon="move_up" @click="bringToFront" class="q-px-none">
           <q-tooltip
-            class="bg-purple text-body2"
+            class="bg-blue-8 text-body2"
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
@@ -69,7 +69,7 @@
           class="q-px-none icon-rotate-180"
         >
           <q-tooltip
-            class="bg-purple text-body2"
+            class="bg-blue-8 text-body2"
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
@@ -182,67 +182,6 @@
         />
       </template>
 
-      <template v-if="selectedLayer.layerType == 'image'">
-        <q-list bordered separator dense>
-          <q-item-label header>Фильтры</q-item-label>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Grayscale</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="grayscale" />
-            </q-item-section>
-          </q-item>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Sepia</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="sepia" />
-            </q-item-section>
-          </q-item>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Invert</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="invert" />
-            </q-item-section>
-          </q-item>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Black/White</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="blackwhite" />
-            </q-item-section>
-          </q-item>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Brownie</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="brownie" />
-            </q-item-section>
-          </q-item>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Vintage</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="vintage" />
-            </q-item-section>
-          </q-item>
-          <q-item tag="label" v-ripple>
-            <q-item-section>
-              <q-item-label>Polaroid</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <q-toggle color="blue" v-model="polaroid" />
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </template>
     </template>
 
     <template v-else>

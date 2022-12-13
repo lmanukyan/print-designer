@@ -25,7 +25,7 @@
     </q-item-section>
 
     <q-item-section avatar side>
-      <div class="text-grey-8 q-gutter-xs">
+      <div class="text-black-8 q-gutter-xs">
         <q-btn
           size="12px"
           flat

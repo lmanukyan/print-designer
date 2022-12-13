@@ -9,6 +9,7 @@ export const Context = {
 
 const CanvasService = {
   fontSize: 24,
+  scale: 0.9,
 
   drawSelectedModel() {
     const center = Context.canvas.getCenter();
@@ -16,9 +17,9 @@ const CanvasService = {
       store.getters["product/selectedModelColorUrl"],
       (data) => {
         Context.canvas.backgroundImage.scaleX =
-          (Context.canvas.getWidth() / data.width) * 0.9;
+          (Context.canvas.getWidth() / data.width) * this.scale;
         Context.canvas.backgroundImage.scaleY =
-          (Context.canvas.getHeight() / data.height) * 0.9;
+          (Context.canvas.getHeight() / data.height) * this.scale;
         return Context.canvas.renderAll();
       },
       {
@@ -204,9 +205,9 @@ const CanvasService = {
           store.state.product.selectedModelColor[mode].url,
           (data) => {
             canvas.backgroundImage.scaleX =
-              (canvas.getWidth() / data.width) * 0.9;
+              (canvas.getWidth() / data.width) * this.scale;
             canvas.backgroundImage.scaleY =
-              (canvas.getHeight() / data.height) * 0.9;
+              (canvas.getHeight() / data.height) * this.scale;
 
             canvas
               .renderAll()

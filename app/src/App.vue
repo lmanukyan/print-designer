@@ -241,8 +241,10 @@ export default {
   }
   .canvas-container {
     position: relative;
-    left: calc(25%);
-    transform: translateX(-50%);
+    left: 50%;
+    margin-left: -100%;
+    zoom: 0.7;
+    margin-top: 20px;
   }
 }
 </style>

@@ -188,10 +188,10 @@ export default {
       let user = await UserService.getProfile();
       if (user) {
         this.setUser(user);
-        this.setCatalogModalOpened(true);
       } else {
-        this.loadProductModels(null);
+        await this.loadProductModels(null);
       }
+      this.setCatalogModalOpened(true);
     },
 
     async loadPricing() {

@@ -16,9 +16,8 @@
         <q-item clickable v-ripple @click="launchProjects(project.id)">
           <q-item-section>{{ project.title }}</q-item-section>
           <q-item-section avatar>
-            <div class="q-gutter-xs">
+            <div>
               <q-btn
-                class="gt-xs"
                 size="12px"
                 flat
                 dense
@@ -29,7 +28,6 @@
               />
               <q-btn
                 v-if="selectedProjectId == project.id"
-                class="gt-xs"
                 size="12px"
                 flat
                 dense
@@ -39,7 +37,7 @@
               />
               <q-btn
                 v-else
-                class="gt-xs text-grey-7"
+                class="text-grey-7"
                 size="12px"
                 flat
                 dense

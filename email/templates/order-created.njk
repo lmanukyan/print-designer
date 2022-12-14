@@ -4,53 +4,103 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Email - Order created</title>
+  <style>
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+    }
+  </style>
 </head>
 <body>
   <h2>{{ title }}</h2>
 
   <table>
-  
-    <tr>
-      <td>Модель:</td>
-      <td>{{ 'клиента' if clientModel else 'наш' }}</td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>Модель:</td>
+        <td>{{ 'клиента' if clientModel else 'наш' }}</td>
+      </tr>
+      <tr>
+        <td>Телефон:</td>
+        <td>{{ phone }}</td>
+      </tr>
+      <tr>
+        <td>Цена:</td>
+        <td>{{ price }} ₽</td>
+      </tr>
+      <tr>
+        <td>Срочность:</td>
+        <td>{{ 'да' if urgency else 'нет' }}</td>
+      </tr>
 
-    <tr>
-      <td>Телефон:</td>
-      <td>{{ phone }}</td>
-    </tr>
-
-    <tr>
-      <td>Цена:</td>
-      <td>{{ price }} ₽</td>
-    </tr>
-
-    <tr>
-      <td>Срочность:</td>
-      <td>{{ 'да' if urgency else 'нет' }}</td>
-    </tr>
-
-    {% if not clientModel %}    
-
-    <tr>
-      <td>Качество:</td>
-      <td>{{ quality }}</td>
-    </tr>
-
-    <tr>
-      <td>Размер:</td>
-      <td>{{ quantity | safe }}</td>
-    </tr>
-
-    {% endif %}
-    
+      {% if not clientModel %}    
+        <tr>
+          <td>Качество:</td>
+          <td>{{ quality }}</td>
+        </tr>
+        <tr>
+          <td>Размер:</td>
+          <td>{{ quantity | safe }}</td>
+        </tr>
+      {% endif %}
+    <tbody>
   </table>
 
-  <ul>
-    {% for layer in json.canvasData.objects %}
-      <li>{{ layer.type }}</li>
-    {% endfor %}
-  </ul>
+  <br/>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Тип</th>
+        <th>Значение</th>
+        <th>Атрибуты</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for layer in json.canvasData.objects %}
+        {% if layer.type === 'text' %}
+          <tr>
+            <td>Текст</td>
+            <td>{{ layer.text }}</td>
+            <td>
+              <ul>
+                <li><b>Размер шрифта:</b> {{ layer.fontSize * layer.scaleX }}px</li>
+                <li><b>Шрифт:</b> {{ layer.fontFamily }}</li>
+                <li><b>Цвет:</b> {{ layer.fill }}</li>
+                <li><b>Поворот:</b> {{ layer.angle }}°</li>
+                <li><b>Болд:</b> {{ 'да' if layer.fontWeight === 'bold' else 'нет' }}</li>
+                <li><b>Италик:</b> {{ 'да' if layer.fontStyle === 'italic' else 'нет' }}</li>
+                <li><b>Подчеркивание:</b> {{ 'да' if layer.underline else 'нет' }}</li>
+                <li><b>Отражение по горизонтали:</b> {{ 'да' if layer.flipX else 'нет' }}</li>
+                <li><b>Отражение по вертикали:</b> {{ 'да' if layer.flipY else 'нет' }}</li>
+              </ul>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td>Изображение</td>
+            <td>
+              <img src="{{ layer.src }}" width="100" />
+            </td>
+            <td>
+              <ul>
+                <li><b>Ширина:</b> {{ layer.width * layer.scaleX }}px</li>
+                <li><b>Высота:</b> {{ layer.height * layer.scaleY }}px</li>
+                <li><b>Поворот:</b> {{ layer.angle }}°</li>
+                <li><b>Отражение по горизонтали:</b> {{ 'да' if layer.flipX else 'нет' }}</li>
+                <li><b>Отражение по вертикали:</b> {{ 'да' if layer.flipY else 'нет' }}</li>
+              </ul>
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
 
 </body>
 </html>

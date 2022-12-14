@@ -53,7 +53,7 @@ const CanvasService = {
       borderColor: "#1976d2",
       cornerColor: "#1976d2",
       strokeWidth: 20,
-      cornerSize: 10,
+      cornerSize: 15,
       transparentCorners: false,
       globalCompositeOperation: "source-atop",
       _controlsVisibility: {
@@ -81,7 +81,7 @@ const CanvasService = {
           borderColor: "#1976d2",
           cornerColor: "#1976d2",
           strokeWidth: 20,
-          cornerSize: 10,
+          cornerSize: 15,
           transparentCorners: false,
           _controlsVisibility: {
             mt: false,
@@ -170,9 +170,9 @@ const CanvasService = {
 
   toJSON() {
     return Context.canvas.toJSON([
+      "mode",
       "layerId",
       "layerType",
-      "mode",
       "_controlsVisibility",
     ]);
   },

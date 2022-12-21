@@ -182,7 +182,7 @@ export default {
       { label: "плотный", value: "dense" },
     ],
     orderModal: false,
-    orderCreatedModal: true,
+    orderCreatedModal: false,
     loading: false,
     phone: "",
   }),

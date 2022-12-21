@@ -14,13 +14,18 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_DOMAIN,
   admin: {
     user: Users.slug,
-    webpack: (config) => {
-      config.resolve = {
+    webpack: (config) => ({
+      ...config,
+      resolve: {
         ...config.resolve,
-        fallback: { fs: false, path: false, crypto: false, zlib: false, 'original-fs': false }
+        fallback: { 
+          ...config.resolve.fallback,
+          'original-fs': false, 
+          zlib: false,
+          fs: false, 
+        }
       }
-			return config;
-		}
+		})
   },
   collections: [
     Users,

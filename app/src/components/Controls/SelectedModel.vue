@@ -114,7 +114,7 @@
     </q-card-section>
 
     <q-dialog v-model="orderModal" :persistent="loading">
-      <q-card style="min-width: 450px">
+      <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-md">
           <div class="text-h6">Номер телефона</div>
           <q-space />
@@ -145,14 +145,14 @@
     </q-dialog>
 
     <q-dialog v-model="orderCreatedModal">
-      <q-card style="min-width: 450px">
+      <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6">Заказ успешно оформлен</div>
+          <div class="text-h6">Заявка принята</div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
         <q-card-section class="q-py-lg text-center">
-          <div class="q-mb-md">
+          <div class="q-mb-lg">
             <q-btn round color="secondary" icon="done" />
           </div>
           <span class="text-body1">Спасибо, ваша заявка принята! <br/> Мы свяжемся с вами в ближайшее время.</span>
@@ -182,7 +182,7 @@ export default {
       { label: "плотный", value: "dense" },
     ],
     orderModal: false,
-    orderCreatedModal: false,
+    orderCreatedModal: true,
     loading: false,
     phone: "",
   }),

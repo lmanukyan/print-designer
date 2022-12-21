@@ -17,7 +17,7 @@ export default buildConfig({
     webpack: (config) => {
       config.resolve = {
         ...config.resolve,
-        fallback: { fs: false, path: false, crypto: false }
+        fallback: { fs: false, path: false, crypto: false, zlib: false, 'original-fs': false }
       }
 			return config;
 		}

@@ -242,7 +242,9 @@ const CanvasService = {
     let frontBlob = await this.takeVirtualCapture("front");
     front = await MediaService.uploadBlob(frontBlob);
 
-    if (typeof store.state.product.selectedModelColor.back !== "undefined") {
+    console.log(store.state.product.selectedModelColor.back);
+
+    if (store.state.product.selectedModelColor.back) {
       let backBlob = await this.takeVirtualCapture("back");
       back = await MediaService.uploadBlob(backBlob);
     }

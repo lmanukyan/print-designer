@@ -96,17 +96,20 @@ const Orders = {
       path: '/:id/print',
       method: 'get',
       handler: async (req, res, next) => {
-        const order = await req.payload.findByID({
-          collection: 'orders', 
-          id: req.params.id
-        });
+        try {        
+          const order = await req.payload.findByID({
+            collection: 'orders', 
+            id: req.params.id
+          });
 
-        const html = nunjucks.render(`order-created.njk`, {
-          ...order,
-          json: JSON.parse(order.json)
-        });
-
-        res.send(html);
+          const html = nunjucks.render(`order-created.njk`, {
+            ...order,
+            json: JSON.parse(order.json)
+          });
+          res.send(html);
+        } catch(e) {
+          res.send(e);
+        }
       }
     }
   ]

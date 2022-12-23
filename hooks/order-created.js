@@ -54,17 +54,25 @@ export default async function OrderCreated({ doc, req,  operation }) {
     );
   }
 
-  await payload.sendEmail({
-    from: `${econf.fromName} <${econf.fromAddress}>`,
-    to: econf.managerEmail,
-    subject: 'New order',
-    template: 'order-created',
-    context: emailContext,
-    attachments: [
-      {
-        filename: 'attachments.zip',
-        content: zip.toBuffer()
-      }
-    ]
-  });
+  try {
+    await payload.sendEmail({
+      from: `${econf.fromName} <${econf.fromAddress}>`,
+      to: econf.managerEmail,
+      subject: 'New order',
+      template: 'order-created',
+      context: emailContext,
+      attachments: [
+        {
+          filename: 'attachments.zip',
+          content: zip.toBuffer()
+        }
+      ]
+    });
+  } catch(e) {
+    fs.appendFile(
+      `${payload.config.paths.configDir}/error.log`,
+      JSON.stringify(e) + '\n',
+      () => {}
+    );
+  }
 }

@@ -33,7 +33,7 @@ export default async function OrderCreated({ doc, req,  operation }) {
   if (doc.back) {
     const back = await payload.findByID({
       collection: 'media',
-      id: doc.front
+      id: doc.back
     });
   
     zip.addFile(

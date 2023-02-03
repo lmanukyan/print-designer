@@ -3,10 +3,13 @@
 
 Конструктор одежды и футболок онлайн
 
+![website](https://github.com/lmanukyan/print-designer/blob/develop/screenshot.png?raw=true)
+
+[Demo / Демо](https://app.print-rtp.ru/)
 
 ## База данных
 
-Для хранения записей используется MongoDB. Если MongoDB не установлен локально, то можно использовать облачное решение - [mongodb.com](https://mongodb.com)
+Для хранения записей используется [MongoDB](https://mongodb.com)
 
 
 ## Подготовка к запуску
@@ -105,4 +108,3 @@
 ```bash
   NODE_ENV=production && pm2 start server.js
 ```
-

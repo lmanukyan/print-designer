@@ -3,7 +3,7 @@
 
 Конструктор одежды и футболок онлайн
 
-![website](https://github.com/lmanukyan/print-designer/blob/develop/screenshot.png?raw=true)
+![website](https://github.com/lmanukyan/print-designer/blob/develop/screenshot.jpg?raw=true)
 
 [Demo / Демо](https://app.print-rtp.ru/)
 

@@ -28,11 +28,8 @@ export const OwnerAccess = async (context) => {
       showHiddenFields: true,
     });
 
-    console.log( result.author, context.req.user );
-
     return result.author.id == context.req.user.id;
   } catch(e){
-    console.log( e );
     return false;
   }
 

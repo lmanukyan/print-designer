@@ -5,7 +5,9 @@
 
 ![website](https://github.com/lmanukyan/print-designer/blob/develop/screenshot.jpg?raw=true)
 
-[Demo / Демо](https://app.print-rtp.ru/)
+## Сайт проекта
+
+[app.print-rtp.ru](https://app.print-rtp.ru/)
 
 ## База данных
 
@@ -91,6 +93,13 @@
   (cd app && yarn build)
 ```
 
+Запуск фронта DEV
+
+```bash
+  yarn serve
+  # localhot:3040
+```
+
 Сборка сервера
 
 ```bash
@@ -101,6 +110,8 @@
 
 ```bash
   yarn serve
+  # Админка будет доступен по адресу
+  # localhost:3050/admin
 ```
 
 Запуск сервера через pm2

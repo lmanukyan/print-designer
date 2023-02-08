@@ -191,7 +191,6 @@ export default {
       } else {
         await this.loadProductModels(null);
       }
-      this.setCatalogModalOpened(true);
     },
 
     async loadPricing() {

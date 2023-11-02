@@ -110,3 +110,5 @@ build/
 .idea/
 
 .DS_Store
+
+yarn.lock

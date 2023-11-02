@@ -17,7 +17,7 @@ export const OwnerAccess = async (context) => {
 
   const method = context.req.method.toLowerCase();
 
-  if( AdminAccess(context) || method === 'create' ){
+  if(method === 'create'){
     return true;
   }
 

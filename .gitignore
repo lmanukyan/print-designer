@@ -105,4 +105,8 @@ dist
 
 media/
 
+build/
+
+.idea/
+
 .DS_Store

@@ -33,7 +33,7 @@ const Projects = {
   hooks: {
     beforeRead: [
       ({ doc, req, query }) => {
-        if( req.query.hasOwnProperty('mini') ){
+        if( req.query?.hasOwnProperty('mini') ){
           delete doc.json;
         }
       }

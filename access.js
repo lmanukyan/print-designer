@@ -21,16 +21,9 @@ export const OwnerAccess = async (context) => {
     return true;
   }
 
-  try{
-    const result = await context.req.payload.findByID({
-      collection: context.req.collection.config.slug,
-      id: context.id,
-      showHiddenFields: true,
-    });
-
-    return result.author.id == context.req.user.id;
-  } catch(e){
-    return false;
-  }
-
+  return {
+    author: {
+      equals: context.req.user.id,
+    },
+  };
 }

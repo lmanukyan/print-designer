@@ -8,8 +8,8 @@
     indicator-color="primary"
     align="justify"
   >
-    <q-tab name="product" icon="crop_original" label="Продукт" />
-    <q-tab name="object" icon="tune" label="Объект" />
+    <q-tab name="product" icon="crop_original" :label="$t('label.product')" />
+    <q-tab name="object" icon="tune" :label="$t('label.object')" />
   </q-tabs>
 
   <q-tab-panels v-model="tab" animated>

@@ -13,9 +13,9 @@
       </q-bar>
 
       <q-card-section>
-
-        <h4 class="text-center q-mt-lg">Выберите продукт</h4>
-
+        <h4 class="text-center q-mt-lg">
+          {{  $t('label.selectModel') }}
+        </h4>
         <div class="grid-4">
           <q-card
             v-for="model in models"
@@ -30,14 +30,14 @@
             </div>
             <q-card-actions align="center">
               <q-btn color="primary" @click="changeModel(model)">
-                Выбрать
+                {{ $t('label.select') }}
               </q-btn>
               <q-btn
                 v-if="canDelete(model)"
                 @click="deleteModelById(model.id)"
                 color="negative"
               >
-                Удалить
+                {{ $t('label.delete') }}
               </q-btn>
             </q-card-actions>
           </q-card>

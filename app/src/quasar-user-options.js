@@ -6,10 +6,12 @@ import { Notify } from 'quasar'
 
 Notify.registerType('error', {
   color: 'negative',
+  icon: 'error'
 });
 
 Notify.registerType('success', {
   color: 'positive',
+  icon: 'check_circle'
 });
 
 Notify.registerType('orderSuccess', {
@@ -24,8 +26,9 @@ export default {
   },
   config: {
     notify: {
-      position: 'bottom-right',
-      timeout: 2000
+      position: 'top-right',
+      timeout: 2500,
+      progress: true
     }
   },
 }

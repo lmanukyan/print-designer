@@ -16,8 +16,8 @@
         <div class="row justify-center">
           <div class="col-md-4 col-sm-10">
             <q-tabs v-model="tab">
-              <q-tab name="login" label="Войти" />
-              <q-tab name="register" label="Создать аккаунт" />
+              <q-tab name="login" :label="$t('label.login')" />
+              <q-tab name="register" :label="$t('label.createAccount')" />
             </q-tabs>
 
             <q-tab-panels v-model="tab" animated swipeable>
@@ -28,29 +28,28 @@
                     type="email"
                     class="full-width"
                     filled
-                    label="Email"
+                    :label="$t('label.email')"
                     lazy-rules
                     :disable="loading"
-                    :rules="[(val) => validateEmail(val) || 'Неверный e-mail․']"
+                    :rules="[(val) => validateEmail(val) || $t('text.error.invalidEmail')]"
                   />
                   <q-input
                     v-model="password"
                     type="password"
                     class="full-width"
                     filled
-                    label="Пароль"
+                    :label="$t('label.password')"
                     lazy-rules
                     :disable="loading"
                     :rules="[
                       (val) =>
-                        (val && val.length > 5) ||
-                        'Пароль должен содержать не менее 8 символов․',
+                        (val && val.length > 5) || $t('text.error.shortPassword'),
                     ]"
                   />
                   <div class="q-ml-none">
                     <q-btn
                       :loading="loading"
-                      label="Войти"
+                      :label="$t('label.login')"
                       type="submit"
                       color="primary"
                     />
@@ -64,11 +63,11 @@
                     type="text"
                     class="full-width"
                     filled
-                    label="Ваше имя"
+                    :label="$t('label.name')"
                     lazy-rules
                     :rules="[
                       (val) =>
-                        (val && val.length > 0) || 'Имя не может быть пустым.',
+                        (val && val.length > 0) || $t('text.error.emptyName'),
                     ]"
                   />
 
@@ -77,27 +76,26 @@
                     type="email"
                     class="full-width"
                     filled
-                    label="Email"
+                    :label="$t('label.email')"
                     lazy-rules
-                    :rules="[(val) => validateEmail(val) || 'Неверный e-mail․']"
+                    :rules="[(val) => validateEmail(val) || $t('text.error.invalidEmail')]"
                   />
                   <q-input
                     v-model="password"
                     type="password"
                     class="full-width"
                     filled
-                    label="Пароль"
+                    :label="$t('label.password')"
                     lazy-rules
                     :rules="[
                       (val) =>
-                        (val && val.length > 5) ||
-                        'Пароль должен содержать не менее 8 символов․',
+                        (val && val.length > 5) || $t('text.error.shortPassword'),
                     ]"
                   />
                   <div class="q-ml-none">
                     <q-btn
                       :loading="loading"
-                      label="Войти"
+                      :label="$t('label.register')"
                       type="submit"
                       color="primary"
                     />

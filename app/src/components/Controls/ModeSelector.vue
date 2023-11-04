@@ -1,6 +1,5 @@
 <template>
   <div class="q-pa-md row items-start mode-selector">
-    
     <div v-if="selectedModelColor" class="selectors-wrapper">
       <div
         @click="setMode('front')" 
@@ -18,7 +17,6 @@
         <img :src="selectedModelColor.back.url" alt="">
       </div>
     </div>
-
   </div>
 </template>
 

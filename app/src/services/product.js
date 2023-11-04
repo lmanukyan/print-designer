@@ -1,5 +1,6 @@
 import axios from '@/services/axios'
 import { Notify } from 'quasar'
+import { t } from '../locales'
 
 const ProductService = {
 
@@ -24,10 +25,10 @@ const ProductService = {
   async create(data) {
     try {
       let result = await axios.post('products', data);
-      Notify.create({ type: 'success', message: 'Успещно создан.' });
+      Notify.create({ type: 'success', message: t('text.successfullyCreated') });
       return result.data.doc;
     } catch (e) {
-      Notify.create({ type: 'error', message: 'Произошла ошибка. Повторите попытку позже.' });
+      Notify.create({ type: 'error', message: t('text.error.errorOccurred') });
       return false;
     }
   },
@@ -35,12 +36,12 @@ const ProductService = {
   async delete(id) {
     try {
       let result = await axios.delete(`products/${id}`);
-      Notify.create({ type: 'success', message: 'Модель успещно удалена.' });
+      Notify.create({ type: 'success', message: t('text.successfullyDeleted') });
       console.log('delete: ', result);
       return true;
     } catch (e) {
       console.log('error:create: ', e);
-      Notify.create({ type: 'error', message: 'Произошла ошибка. Повторите попытку позже.' });
+      Notify.create({ type: 'error', message: t('text.error.errorOccurred') });
       return false;
     }
   },

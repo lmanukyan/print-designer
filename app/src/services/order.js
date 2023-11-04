@@ -1,5 +1,6 @@
 import axios from '@/services/axios'
 import { Notify } from 'quasar'
+import { t } from '../locales'
 
 const OrderService = {
 
@@ -15,10 +16,9 @@ const OrderService = {
   async create(data) {
     try {
       let result = await axios.post('orders?depth=0', data);
-      // Notify.create({ type: 'orderSuccess', message: 'Спасибо, ваша заявка принята! Мы свяжемся с вами в ближайшее время' });
       return result.data.doc;
     } catch (e) {
-      Notify.create({ type: 'error', message: 'Произошла ошибка. Повторите попытку позже.' });
+      Notify.create({ type: 'error', message: t('text.error.errorOccurred') });
       return false;
     }
   },

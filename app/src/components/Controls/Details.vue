@@ -13,8 +13,9 @@
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
-            >Центрировать по вертикали</q-tooltip
           >
+            {{ $t('label.centerVertically') }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           push
@@ -27,8 +28,9 @@
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
-            >Центрировать по горизонтали</q-tooltip
           >
+            {{ $t('label.centerHorizontally') }}
+          </q-tooltip>
         </q-btn>
         <q-btn push icon="flip" @click="setBoolProp('flipX')" class="q-px-none">
           <q-tooltip
@@ -36,8 +38,9 @@
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
-            >Отразить по горизонтали</q-tooltip
           >
+            {{ $t('label.flipHorizontally') }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           push
@@ -50,8 +53,9 @@
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
-            >Отразить по вертикали</q-tooltip
           >
+            {{ $t('label.flipVertically') }}
+          </q-tooltip>
         </q-btn>
         <q-btn push icon="move_up" @click="bringToFront" class="q-px-none">
           <q-tooltip
@@ -59,8 +63,9 @@
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
-            >Слой вверх</q-tooltip
           >
+            {{ $t('label.layerUp') }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           push
@@ -73,12 +78,15 @@
             anchor="top middle"
             self="bottom middle"
             :offset="[10, 10]"
-            >Слой вниз</q-tooltip
           >
+            {{ $t('label.layerDown') }}
+          </q-tooltip>
         </q-btn>
       </q-btn-group>
 
-      <p class="text-subtitle1 q-pt-md q-pb-md">Поворот</p>
+      <p class="text-subtitle1 q-pt-md q-pb-md">
+        {{ $t('label.rotate') }}
+      </p>
       <div class="q-px-sm">
         <q-slider
           v-model="selectedLayer.angle"
@@ -113,7 +121,9 @@
       </div>
 
       <template v-if="selectedLayer.layerType == 'text'">
-        <p class="text-subtitle1 q-pb-md">Размер</p>
+        <p class="text-subtitle1 q-pb-md">
+          {{ $t('label.size') }}
+        </p>
         <div class="q-px-sm">
           <q-slider
             v-model="scale"
@@ -127,7 +137,9 @@
           />
         </div>
 
-        <p class="text-subtitle1">Текст</p>
+        <p class="text-subtitle1">
+          {{ $t('label.text') }}
+        </p>
         <q-input
           filled
           v-model="selectedLayer.text"
@@ -135,7 +147,9 @@
           input-class="layer-text-field"
         />
 
-        <p class="text-subtitle1 q-mt-md">Стиль</p>
+        <p class="text-subtitle1 q-mt-md">
+          {{ $t('label.fontStyle') }}
+        </p>
         <q-btn-group push spread>
           <q-btn
             push
@@ -157,7 +171,9 @@
           />
         </q-btn-group>
 
-        <p class="text-subtitle1 q-mt-md">Фонт</p>
+        <p class="text-subtitle1 q-mt-md">
+          {{ $t('label.fontFamily') }}
+        </p>
         <q-select
           filled
           v-model="selectedLayer.fontFamily"
@@ -186,7 +202,7 @@
 
     <template v-else>
       <p class="text-subtitle1">
-        Выберите объект для редактирования его параметров
+        {{ $t('text.selectObjectForCustomization') }}
       </p>
     </template>
   </div>

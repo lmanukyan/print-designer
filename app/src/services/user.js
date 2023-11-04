@@ -1,5 +1,6 @@
 import axios from '@/services/axios'
 import { Notify } from 'quasar'
+import { t } from '../locales'
 
 const UserService = {
 
@@ -21,11 +22,11 @@ const UserService = {
       });
 
       localStorage.setItem('accessToken', result.data.token);
-      Notify.create({ type: 'success', message: 'Вы успешно авторизованы.' });
+      Notify.create({ type: 'success', message: t('text.successfullyloggedIn') });
 
       return result.data.user;
     } catch (e) {
-      Notify.create({ type: 'error', message: 'Неверный email или пароль.' });
+      Notify.create({ type: 'error', message: t('text.invalidEmailOrPassword') });
       return false;
     }
   },
@@ -39,7 +40,7 @@ const UserService = {
       });
       return this.login(email, password);
     } catch (e) {
-      Notify.create({ type: 'error', message: 'Пользователь с таким email уже существует.' });
+      Notify.create({ type: 'error', message: t('text.error.emailAlreadyUsed') });
       return false;
     }
   },

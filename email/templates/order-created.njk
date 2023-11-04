@@ -22,29 +22,21 @@
   <table>
     <tbody>
       <tr>
-        <td>Модель:</td>
-        <td>{{ 'клиента' if clientModel else 'наш' }}</td>
+        <td>Model:</td>
+        <td>{{ 'client' if clientModel else 'our' }}</td>
       </tr>
       <tr>
-        <td>Телефон:</td>
+        <td>Phone:</td>
         <td>{{ phone }}</td>
       </tr>
       <tr>
-        <td>Цена:</td>
+        <td>Price:</td>
         <td>{{ price }} ₽</td>
-      </tr>
-      <tr>
-        <td>Срочность:</td>
-        <td>{{ 'да' if urgency else 'нет' }}</td>
       </tr>
 
       {% if not clientModel %}    
         <tr>
-          <td>Качество:</td>
-          <td>{{ quality }}</td>
-        </tr>
-        <tr>
-          <td>Размер:</td>
+          <td>Size:</td>
           <td>{{ quantity | safe }}</td>
         </tr>
       {% endif %}
@@ -56,44 +48,44 @@
   <table>
     <thead>
       <tr>
-        <th>Тип</th>
-        <th>Значение</th>
-        <th>Атрибуты</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Attributes</th>
       </tr>
     </thead>
     <tbody>
       {% for layer in json.canvasData.objects %}
         {% if layer.type === 'text' %}
           <tr>
-            <td>Текст</td>
+            <td>Text</td>
             <td>{{ layer.text }}</td>
             <td>
               <ul>
-                <li><b>Размер шрифта:</b> {{ layer.fontSize * layer.scaleX }}px</li>
-                <li><b>Шрифт:</b> {{ layer.fontFamily }}</li>
-                <li><b>Цвет:</b> {{ layer.fill }}</li>
-                <li><b>Поворот:</b> {{ layer.angle }}°</li>
-                <li><b>Болд:</b> {{ 'да' if layer.fontWeight === 'bold' else 'нет' }}</li>
-                <li><b>Италик:</b> {{ 'да' if layer.fontStyle === 'italic' else 'нет' }}</li>
-                <li><b>Подчеркивание:</b> {{ 'да' if layer.underline else 'нет' }}</li>
-                <li><b>Отражение по горизонтали:</b> {{ 'да' if layer.flipX else 'нет' }}</li>
-                <li><b>Отражение по вертикали:</b> {{ 'да' if layer.flipY else 'нет' }}</li>
+                <li><b>Font size:</b> {{ layer.fontSize * layer.scaleX }}px</li>
+                <li><b>Font family:</b> {{ layer.fontFamily }}</li>
+                <li><b>Color:</b> {{ layer.fill }}</li>
+                <li><b>Rotate:</b> {{ layer.angle }}°</li>
+                <li><b>Bold:</b> {{ 'yes' if layer.fontWeight === 'bold' else 'no' }}</li>
+                <li><b>Italic:</b> {{ 'yes' if layer.fontStyle === 'italic' else 'no' }}</li>
+                <li><b>Underline:</b> {{ 'yes' if layer.underline else 'no' }}</li>
+                <li><b>Flip horizontally:</b> {{ 'yes' if layer.flipX else 'no' }}</li>
+                <li><b>Flip vertically:</b> {{ 'yes' if layer.flipY else 'no' }}</li>
               </ul>
             </td>
           </tr>
         {% else %}
           <tr>
-            <td>Изображение</td>
+            <td>Image</td>
             <td>
               <img src="{{ layer.src }}" width="100" />
             </td>
             <td>
               <ul>
-                <li><b>Ширина:</b> {{ layer.width * layer.scaleX }}px</li>
-                <li><b>Высота:</b> {{ layer.height * layer.scaleY }}px</li>
-                <li><b>Поворот:</b> {{ layer.angle }}°</li>
-                <li><b>Отражение по горизонтали:</b> {{ 'да' if layer.flipX else 'нет' }}</li>
-                <li><b>Отражение по вертикали:</b> {{ 'да' if layer.flipY else 'нет' }}</li>
+                <li><b>Witdh:</b> {{ layer.width * layer.scaleX }}px</li>
+                <li><b>Height:</b> {{ layer.height * layer.scaleY }}px</li>
+                <li><b>Rotate:</b> {{ layer.angle }}°</li>
+                <li><b>Flip horizontally:</b> {{ 'yes' if layer.flipX else 'no' }}</li>
+                <li><b>Flip vertically:</b> {{ 'yes' if layer.flipY else 'no' }}</li>
               </ul>
             </td>
           </tr>

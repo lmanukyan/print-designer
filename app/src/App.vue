@@ -2,9 +2,30 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="glossy">
       <q-toolbar class="bg-primary text-white">
-        <q-toolbar-title> РТП Принт </q-toolbar-title>
+        <q-toolbar-title> Print Designer </q-toolbar-title>
+        <div class="row items-center">
 
-        <div>
+          <q-btn color="blue-grey-2" text-color="black" :label="$i18n.locale" class="q-mr-sm">
+            <q-menu>
+              <q-list style="min-width: 100px">
+                <q-item 
+                  v-for="locale in $i18n.availableLocales" 
+                  :key="locale"
+                  clickable 
+                  v-close-popup
+                  @click="setLanguage(locale)"
+                >
+                  <q-item-section class="text-uppercase">
+                    {{ locale }}
+                  </q-item-section>
+                  <q-item-section v-if="locale == $i18n.locale">
+                      <q-icon name="done" color="black" size="20px" />
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+
           <q-item clickable v-ripple v-if="user">
             <q-avatar color="white" text-color="primary">
               {{ user.name[0] }}
@@ -12,7 +33,7 @@
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item clickable v-close-popup @click="logout">
-                  <q-item-section>Выйти</q-item-section>
+                  <q-item-section>{{ $t('label.logout') }}</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
@@ -23,7 +44,7 @@
             no-caps
             color="white"
             text-color="black"
-            label="Войти"
+            :label="$t('label.login')"
           />
         </div>
       </q-toolbar>
@@ -62,6 +83,7 @@ import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { mapMutations } from "vuex";
 import { fabric } from "fabric";
+import { syncLanguage } from "./locales";
 
 import UserService from "@/services/user";
 import OrderService from "@/services/order";
@@ -209,6 +231,11 @@ export default {
       await UserService.logout();
       window.location.reload();
     },
+
+    setLanguage(lang) {
+      this.$i18n.locale = lang; 
+      syncLanguage(lang);
+    }
   },
 };
 </script>

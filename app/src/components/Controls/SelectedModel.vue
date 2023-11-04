@@ -6,7 +6,7 @@
       color="white"
       icon="shopping_bag"
       text-color="black"
-      label="каталог"
+      :label="$t('label.catalog')"
       class="q-mr-sm"
     />
     <q-btn
@@ -14,7 +14,7 @@
       no-caps
       color="primary"
       icon="add"
-      label="создать свой"
+      :label="$t('label.createOwn')"
     />
   </div>
 
@@ -24,7 +24,7 @@
     </q-card-section>
 
     <q-card-section>
-      <p class="text-subtitle1">Цвет</p>
+      <p class="text-subtitle1">{{ $t('label.color') }}</p>
       <q-card-actions>
         <div
           v-for="image in selectedModel.images"
@@ -44,38 +44,22 @@
 
       <q-item tag="label">
         <q-item-section>
-          <q-item-label>Цена</q-item-label>
+          <q-item-label>{{ $t('label.price') }}</q-item-label>
         </q-item-section>
         <q-item-section side>
-          <span class="text-bold">{{ price }} ₽</span>
-        </q-item-section>
-      </q-item>
-
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Срочно</q-item-label>
-        </q-item-section>
-        <q-item-section side>
-          <q-checkbox v-model="urgency" />
+          <span class="text-bold">{{ price }} {{ !isNaN(Number(price)) ? '₽' : '' }}</span>
         </q-item-section>
       </q-item>
 
       <template v-if="!selectedModel.clientModel">
-        <q-item tag="label" v-ripple>
-          <q-item-section>
-            <q-item-label>Качество</q-item-label>
-          </q-item-section>
-          <q-item-section side>
-            <q-select v-model="quality" :options="qualityOptions" dense />
-          </q-item-section>
-        </q-item>
-
         <q-list separator dense class="q-pa-md">
           <q-item class="text-bold no-padding">
-            <q-item-section>Размер</q-item-section>
-            <q-item-section class="q-mr-md text-right"
-              >Kоличество</q-item-section
-            >
+            <q-item-section>
+              {{ $t('label.size') }}
+            </q-item-section>
+            <q-item-section class="q-mr-md text-right">
+              {{ $t('label.quantity') }}
+            </q-item-section>
           </q-item>
           <template v-for="size in selectedModel.sizes" :key="size">
             <q-item class="no-padding">
@@ -93,10 +77,12 @@
             </q-item>
           </template>
           <q-item class="text-bold no-padding">
-            <q-item-section>Общее</q-item-section>
-            <q-item-section class="q-mr-md text-right">{{
-              quantity
-            }}</q-item-section>
+            <q-item-section>
+              {{ $t('label.total') }}
+            </q-item-section>
+            <q-item-section class="q-mr-md text-right">
+              {{ quantity }}
+            </q-item-section>
           </q-item>
         </q-list>
       </template>
@@ -106,7 +92,7 @@
           no-caps
           color="primary"
           icon="shopping_basket"
-          label="Заказать"
+          :label="$t('label.order')"
           @click="orderModal = true"
           :disabled="!canOrder()"
         />
@@ -116,7 +102,9 @@
     <q-dialog v-model="orderModal" :persistent="loading">
       <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-md">
-          <div class="text-h6">Номер телефона</div>
+          <div class="text-h6">
+            {{ $t('label.phone') }}
+          </div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
@@ -128,13 +116,17 @@
             fill-mask
             filled
             lazy-rules
-            :rules="[(val) => isValidPhone(val) || 'заполните номер телефона']"
+            :disable="loading"
+            :rules="[(val) => isValidPhone(val) || $t('text.error.emptyPhone')]"
           />
-          <span v-show="loading">Пожалуйста подождите, ваш заказ обрабатывается. Это может занять некоторое время.</span>
+          <span v-show="loading">
+            {{ $t('text.orderBeingProcessed') }}
+            {{ $t('text.canTakeSometime') }}
+          </span>
         </q-card-section>
         <q-card-actions align="right">
           <q-btn
-            label="Отправить"
+            :label="$t('label.send')"
             color="primary"
             @click="createOrder"
             :disabled="loading"
@@ -147,7 +139,9 @@
     <q-dialog v-model="orderCreatedModal">
       <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6">Заявка принята</div>
+          <div class="text-h6">
+            {{ $t('text.applicationAccepted') }}
+          </div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
@@ -155,11 +149,14 @@
           <div class="q-mb-lg">
             <q-btn round color="secondary" icon="done" />
           </div>
-          <span class="text-body1">Спасибо, ваша заявка принята! <br/> Мы свяжемся с вами в ближайшее время.</span>
+          <span class="text-body1">
+            {{ $t('text.thanksApplicationAccepted') }}
+            <br/> 
+            {{ $t('text.weWillContactYou') }}
+          </span>
         </q-card-section>
       </q-card>
     </q-dialog>
-
   </q-card>
 </template>
 
@@ -168,7 +165,6 @@ import { mapState } from "vuex";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 import { mapMutations } from "vuex";
-import { ComputedMutator } from "@/utils";
 
 import OrderService from "@/services/order";
 import CanvasService from "@/services/canvas";
@@ -177,10 +173,6 @@ export default {
   name: "SelectedModel",
 
   data: () => ({
-    qualityOptions: [
-      { label: "тонкий", value: "thin" },
-      { label: "плотный", value: "dense" },
-    ],
     orderModal: false,
     orderCreatedModal: false,
     loading: false,
@@ -202,9 +194,6 @@ export default {
     ...mapState("product", ["selectedModel", "selectedModelColor"]),
     ...mapState("canvas", ["layers"]),
     ...mapGetters("order", ["quantity"]),
-
-    urgency: ComputedMutator("order", "urgency", "setUrgency"),
-    quality: ComputedMutator("order", "quality", "setQuality"),
   },
 
   methods: {
@@ -259,8 +248,6 @@ export default {
         clientModel: this.selectedModel.clientModel,
         phone: this.phone,
         price: this.price,
-        urgency: this.urgency,
-        quality: this.quality.label,
         quantity: this.quantityHtml(),
         front: captures.front.id,
         back: captures.back ? captures.back.id : null,

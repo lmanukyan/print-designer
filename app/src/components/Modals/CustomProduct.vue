@@ -22,12 +22,11 @@
                   type="text"
                   class="full-width"
                   filled
-                  label="Название"
+                  :label="$t('label.title')"
                   lazy-rules
                   :rules="[
                     (val) =>
-                      (val && val.length > 0) ||
-                      'Название не может быть пустым.',
+                      (val && val.length > 0) || $t('text.error.emptyTitle'),
                   ]"
                 />
               </div>
@@ -38,9 +37,9 @@
                 <q-card class="my-card">
                   <q-item>
                     <q-item-section>
-                      <q-item-label
-                        >Передняя
-                        <span class="text-negative">(Обязательно)</span>
+                      <q-item-label>
+                        {{ $t('label.frontSide') }}
+                        <span class="text-negative">({{ $t('label.required') }})</span>
                       </q-item-label>
                     </q-item-section>
                   </q-item>
@@ -61,8 +60,9 @@
                     <q-btn
                       @click="this.$refs.frontImage.click()"
                       color="secondary"
-                      >Выбрать</q-btn
                     >
+                    {{ $t('label.select') }}
+                    </q-btn>
                   </q-card-actions>
                 </q-card>
               </div>
@@ -70,7 +70,9 @@
                 <q-card class="my-card">
                   <q-item>
                     <q-item-section>
-                      <q-item-label>Задняя</q-item-label>
+                      <q-item-label>
+                        {{ $t('label.backSide') }}
+                      </q-item-label>
                     </q-item-section>
                   </q-item>
 
@@ -90,8 +92,9 @@
                     <q-btn
                       @click="this.$refs.backImage.click()"
                       color="secondary"
-                      >Выбрать</q-btn
                     >
+                      {{ $t('label.select') }}
+                    </q-btn>
                   </q-card-actions>
                 </q-card>
               </div>
@@ -100,7 +103,7 @@
             <div class="row justify-center q-mt-lg">
               <q-btn
                 :loading="loading"
-                label="Создать"
+                :label="$t('label.create')"
                 type="submit"
                 color="primary"
               />

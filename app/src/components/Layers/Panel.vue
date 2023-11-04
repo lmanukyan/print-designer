@@ -7,9 +7,9 @@
     indicator-color="primary"
     align="justify"
   >
-    <q-tab name="layers" label="Слои" />
-    <q-tab name="images" label="Файлы" />
-    <q-tab name="project" label="Проект" />
+    <q-tab name="layers" :label="$t('label.layers')" />
+    <q-tab name="images" :label="$t('label.files')" />
+    <q-tab name="projects" :label="$t('label.projects')" />
   </q-tabs>
 
   <q-tab-panels v-model="tab" animated>
@@ -26,7 +26,7 @@
             </q-item-section>
 
             <q-item-section top>
-              <q-item-label class="q-mt-sm"> изображение </q-item-label>
+              <q-item-label class="q-mt-sm">{{ $t('label.image') }}</q-item-label>
             </q-item-section>
 
             <q-item-section avatar side>
@@ -49,7 +49,7 @@
       </q-list>
     </q-tab-panel>
 
-    <q-tab-panel name="project" class="q-px-none">
+    <q-tab-panel name="projects" class="q-px-none">
       <ProjectsTab />
     </q-tab-panel>
   </q-tab-panels>

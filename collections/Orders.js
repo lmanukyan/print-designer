@@ -47,18 +47,6 @@ const Orders = {
       admin: { readOnly: true },
     },
     {
-      name: 'urgency',
-      type: 'checkbox',
-      required: true,
-      admin: { readOnly: true },
-    },
-    {
-      name: 'quality',
-      type: 'text',
-      required: true,
-      admin: { readOnly: true },
-    },
-    {
       name: 'quantity',
       type: 'code',
       admin: { 

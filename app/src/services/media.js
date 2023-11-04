@@ -1,5 +1,6 @@
 import axios from '@/services/axios'
 import { Notify } from 'quasar'
+import { t } from '../locales'
 
 const MediaService = {
     
@@ -10,7 +11,7 @@ const MediaService = {
       });
       return result.data.doc;
     } catch(e){
-      Notify.create({ type: 'error', message: 'Не удалось загрузить файл на сервер.' });
+      Notify.create({ type: 'error', message: t('text.error.cantUploadFile') });
       return false;
     }
   },
@@ -25,7 +26,7 @@ const MediaService = {
       });
       return result.data.doc;
     } catch(e){
-      Notify.create({ type: 'error', message: 'Не удалось загрузить файл на сервер.' });
+      Notify.create({ type: 'error', message: t('text.error.cantUploadFile') });
       return false;
     }
   },

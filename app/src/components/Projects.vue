@@ -1,16 +1,15 @@
 <template>
   <template v-if="user">
     <div class="q-gutter-sm">
-      <q-btn no-caps icon="save" label="сохранить" @click="save" />
+      <q-btn no-caps icon="save" :label="$t('label.save')" @click="save" />
       <q-btn
         no-caps
         color="primary"
         icon="save_as"
-        label="сохр. как"
+        :label="$t('label.saveAs')"
         @click="openSaveModal"
       />
     </div>
-
     <q-list bordered separator dense class="q-mt-lg scroll-area">
       <template v-for="project in projects" :key="project.id">
         <q-item clickable v-ripple @click="launchProjects(project.id)">
@@ -49,7 +48,9 @@
         </q-item>
       </template>
       <q-item v-show="!projects.length">
-        <q-item-section>У вас еще нет сохраненных проектов.</q-item-section>
+        <q-item-section>
+          {{ $t('text.notSavedProjects') }}
+        </q-item-section>
       </q-item>
       <q-separator v-show="projects.length" />
     </q-list>
@@ -57,13 +58,20 @@
     <q-dialog v-model="confirmModal" persistent>
       <q-card>
         <q-card-section class="row items-center">
-          <span class="q-ml-sm">Подтверждаете удаление ?</span>
+          <span class="q-ml-sm">
+            {{ $t('text.confirmDelete') }}
+          </span>
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn flat label="Нет" color="primary" v-close-popup />
+          <q-btn 
+            flat 
+            :label="$t('label.no')" 
+            color="primary" 
+            v-close-popup 
+          />
           <q-btn
             flat
-            label="Да"
+            :label="$t('label.yes')" 
             color="primary"
             v-close-popup
             @click="deleteProjectAsync"
@@ -75,16 +83,23 @@
     <q-dialog v-model="newProjectModal" persistent>
       <q-card style="min-width: 350px">
         <q-card-section class="row items-center">
-          <span class="q-ml-sm">Название проекта</span>
+          <span class="q-ml-sm">
+            {{ $t('text.projectName') }}
+          </span>
         </q-card-section>
         <q-card-section class="q-pt-none">
           <q-input dense v-model="title" autofocus @keyup.enter="saveAs" />
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn flat label="отментиь" color="primary" v-close-popup />
+          <q-btn 
+            flat 
+            :label="$t('label.cancel')" 
+            color="primary" 
+            v-close-popup
+          />
           <q-btn
             flat
-            label="сохранить"
+            :label="$t('label.save')"
             color="primary"
             v-close-popup
             @click="saveAs"
@@ -96,12 +111,13 @@
 
   <template v-else>
     <p>
-      Чтобы сохранить/загрузить проект нужно
+      {{  $t('text.loginForProjects') }}
       <span
         @click="setAuthModalOpened(true)"
         class="text-primary cursor-pointer"
-        >авторизоваться.</span
       >
+      {{  $t('label.login') }}
+      </span>
     </p>
   </template>
 </template>

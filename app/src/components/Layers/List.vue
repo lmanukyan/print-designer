@@ -6,7 +6,7 @@
       color="white"
       text-color="black"
       icon="add"
-      label="текст"
+      :label="$t('label.text')"
       class="q-mr-sm"
     />
     <q-btn
@@ -14,7 +14,7 @@
       @click="this.$refs.fileInput.click()"
       color="primary"
       icon="file_upload"
-      label="картинка"
+      :label="$t('label.image')"
     />
     <input
       ref="fileInput"

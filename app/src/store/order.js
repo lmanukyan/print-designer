@@ -1,3 +1,5 @@
+import { t } from '../locales'
+
 export default {
 
   namespaced: true,
@@ -6,12 +8,10 @@ export default {
     return {
       pricing: {},
       price: 0,
-      quality: {label: 'тонкий', value: 'thin'},
       sizes: {
         xs: 0, s: 0, m: 0,
         l: 0, xl: 0, xxl: 0,
       },
-      urgency: false,
     }
   },
   
@@ -21,14 +21,6 @@ export default {
     },
     setPricing (state, payload) {
       state.pricing = payload
-    },
-    setQuality (state, payload) {
-      state.quality = payload
-      this.dispatch('order/calculatePrice')
-    },
-    setUrgency (state, payload) {
-      state.urgency = payload
-      this.dispatch('order/calculatePrice')
     },
   },
 
@@ -53,31 +45,21 @@ export default {
 
       if(! selectedModel.clientModel){
         if( quantity > getPricingMaxQty(selectedModel.prices) ){
-          commit('setPrice', 'по соглашению')
+          commit('setPrice', t('label.byAgreement'))
           return;
         }
         productPrice = getPriceByQty(selectedModel.prices, quantity)
       }
 
       if( layersCount > getPricingMaxQty(state.pricing.prices) ){
-        commit('setPrice', 'по соглашению')
+        commit('setPrice', t('label.byAgreement'))
         return;
       }
 
       let layersPrice = getPriceByQty(state.pricing.prices, layersCount) * layersCount
 
-      let qualityPercentage = state.pricing.quality[state.quality.value]
-
-      if(qualityPercentage > 0){
-        productPrice = (qualityPercentage * productPrice) / 100 + productPrice
-      }
-
       let finalPrice = (productPrice + layersPrice) * quantity;
       
-      if(state.urgency){
-        finalPrice = (state.pricing.urgency * finalPrice) / 100 + finalPrice
-      }
-
       finalPrice = Math.round(finalPrice)
 
       commit('setPrice', finalPrice)

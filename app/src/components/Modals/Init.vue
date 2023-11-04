@@ -3,7 +3,7 @@
     <q-card>
       <q-card-section>
         <q-spinner color="primary" size="2em" class="q-mr-md" />
-        Загрузка состояния приложения
+        {{ $t('text.loadingAppState') }}
       </q-card-section>
     </q-card>
   </q-dialog>

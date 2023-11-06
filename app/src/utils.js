@@ -39,3 +39,19 @@ fabric.util.object.extend(fabric.Canvas.prototype, {
     defaultOnTouchStartHandler.call(this, e);
   },
 });
+
+export const cloneProxy = (obj) => {
+  const clone = Object.create(Object.getPrototypeOf(obj));
+  const properties = Object.getOwnPropertyDescriptors(obj);
+  
+  for (let prop in properties) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (properties[prop].hasOwnProperty("value")) {
+        clone[prop] = properties[prop].value;
+    } else {
+        clone[prop] = properties[prop];
+    }
+  }
+  
+  return clone;
+}

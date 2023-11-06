@@ -1,5 +1,6 @@
 import { store } from "@/store";
 import { fabric } from "fabric";
+import { cloneProxy } from '../utils'; 
 
 import MediaService from "@/services/media";
 
@@ -35,7 +36,7 @@ const CanvasService = {
     Context.canvas.renderAll();
   },
 
-  addTextLayer(text = "RTP Print") {
+  addTextLayer(text = "Print Designer") {
     let center = Context.canvas.getCenter();
     let textLayer = new fabric.Text(text, {
       layerId: Date.now(),
@@ -50,8 +51,8 @@ const CanvasService = {
       left: center.left,
       originX: "center",
       originY: "center",
-      borderColor: "#1976d2",
-      cornerColor: "#1976d2",
+      borderColor: "#fd7e2c",
+      cornerColor: "#fd7e2c",
       strokeWidth: 20,
       cornerSize: 15,
       transparentCorners: false,
@@ -78,8 +79,8 @@ const CanvasService = {
           mode: store.state.canvas.mode,
           originX: "middle",
           originY: "middle",
-          borderColor: "#1976d2",
-          cornerColor: "#1976d2",
+          borderColor: "#fd7e2c",
+          cornerColor: "#fd7e2c",
           strokeWidth: 20,
           cornerSize: 15,
           transparentCorners: false,
@@ -114,7 +115,6 @@ const CanvasService = {
   },
 
   selectLayer(layer, callback = () => {}) {
-    console.log(layer);
     Context.canvas.getObjects().forEach((object) => {
       if (object.layerId == layer.layerId) {
         Context.canvas.setActiveObject(object);
@@ -136,15 +136,14 @@ const CanvasService = {
   duplicateLayer(layer) {
     Context.canvas.getObjects().forEach((object) => {
       if (object.layerId == layer.layerId) {
-        object.clone((clone) => {
-          clone.set({
-            layerId: Date.now(),
-            layerType: layer.layerType,
-            mode: layer.mode,
-          });
-          Context.canvas.add(clone);
-          Context.canvas.renderAll();
+        const clone = cloneProxy(object);
+        clone.set({
+          layerId: Date.now(),
+          left: clone.left + 10,
+          top: clone.top + 10,
         });
+        Context.canvas.add(clone);
+        Context.canvas.renderAll();
       }
     });
   },

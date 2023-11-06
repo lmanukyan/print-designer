@@ -2,7 +2,7 @@
   <q-item
     @click="selectLayer(layer)"
     :active="layer.layerId == selectedLayer.layerId"
-    active-class="bg-orange-2 text-black-8 active-layer"
+    active-class="bg-teal-12 text-black-8 active-layer"
     clickable
     v-ripple
   >

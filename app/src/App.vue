@@ -5,7 +5,7 @@
         <q-toolbar-title> Print Designer </q-toolbar-title>
         <div class="row items-center">
 
-          <q-btn color="blue-grey-2" text-color="black" :label="$i18n.locale" class="q-mr-sm">
+          <q-btn color="white" text-color="black" :label="$i18n.locale" class="q-mr-sm">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item 
@@ -155,7 +155,8 @@ export default {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Delete" && this.selectedLayer.layerId) {
+      console.log(e.key)
+      if ( ["Delete", "Backspace"].includes(e.key) && this.selectedLayer.layerId) {
         if (document.querySelector(".layer-text-field")?.matches(":focus"))
           return;
         CanvasService.removeLayer(this.selectedLayer);

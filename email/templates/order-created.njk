@@ -45,54 +45,56 @@
 
   <br/>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Value</th>
-        <th>Attributes</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for layer in json.canvasData.objects %}
-        {% if layer.type === 'text' %}
-          <tr>
-            <td>Text</td>
-            <td>{{ layer.text }}</td>
-            <td>
-              <ul>
-                <li><b>Font size:</b> {{ layer.fontSize * layer.scaleX }}px</li>
-                <li><b>Font family:</b> {{ layer.fontFamily }}</li>
-                <li><b>Color:</b> {{ layer.fill }}</li>
-                <li><b>Rotate:</b> {{ layer.angle }}°</li>
-                <li><b>Bold:</b> {{ 'yes' if layer.fontWeight === 'bold' else 'no' }}</li>
-                <li><b>Italic:</b> {{ 'yes' if layer.fontStyle === 'italic' else 'no' }}</li>
-                <li><b>Underline:</b> {{ 'yes' if layer.underline else 'no' }}</li>
-                <li><b>Flip horizontally:</b> {{ 'yes' if layer.flipX else 'no' }}</li>
-                <li><b>Flip vertically:</b> {{ 'yes' if layer.flipY else 'no' }}</li>
-              </ul>
-            </td>
-          </tr>
-        {% else %}
-          <tr>
-            <td>Image</td>
-            <td>
-              <img src="{{ layer.src }}" width="100" />
-            </td>
-            <td>
-              <ul>
-                <li><b>Witdh:</b> {{ layer.width * layer.scaleX }}px</li>
-                <li><b>Height:</b> {{ layer.height * layer.scaleY }}px</li>
-                <li><b>Rotate:</b> {{ layer.angle }}°</li>
-                <li><b>Flip horizontally:</b> {{ 'yes' if layer.flipX else 'no' }}</li>
-                <li><b>Flip vertically:</b> {{ 'yes' if layer.flipY else 'no' }}</li>
-              </ul>
-            </td>
-          </tr>
-        {% endif %}
-      {% endfor %}
-    </tbody>
-  </table>
+  {% if json.canvasData.objects.length %}
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Value</th>
+          <th>Attributes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for layer in json.canvasData.objects %}
+          {% if layer.type === 'text' %}
+            <tr>
+              <td>Text</td>
+              <td>{{ layer.text }}</td>
+              <td>
+                <ul>
+                  <li><b>Font size:</b> {{ layer.fontSize * layer.scaleX }}px</li>
+                  <li><b>Font family:</b> {{ layer.fontFamily }}</li>
+                  <li><b>Color:</b> {{ layer.fill }}</li>
+                  <li><b>Rotate:</b> {{ layer.angle }}°</li>
+                  <li><b>Bold:</b> {{ 'yes' if layer.fontWeight === 'bold' else 'no' }}</li>
+                  <li><b>Italic:</b> {{ 'yes' if layer.fontStyle === 'italic' else 'no' }}</li>
+                  <li><b>Underline:</b> {{ 'yes' if layer.underline else 'no' }}</li>
+                  <li><b>Flip horizontally:</b> {{ 'yes' if layer.flipX else 'no' }}</li>
+                  <li><b>Flip vertically:</b> {{ 'yes' if layer.flipY else 'no' }}</li>
+                </ul>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td>Image</td>
+              <td>
+                <img src="{{ layer.src }}" width="100" />
+              </td>
+              <td>
+                <ul>
+                  <li><b>Witdh:</b> {{ layer.width * layer.scaleX }}px</li>
+                  <li><b>Height:</b> {{ layer.height * layer.scaleY }}px</li>
+                  <li><b>Rotate:</b> {{ layer.angle }}°</li>
+                  <li><b>Flip horizontally:</b> {{ 'yes' if layer.flipX else 'no' }}</li>
+                  <li><b>Flip vertically:</b> {{ 'yes' if layer.flipY else 'no' }}</li>
+                </ul>
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
 
 </body>
 </html>

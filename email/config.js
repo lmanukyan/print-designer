@@ -22,7 +22,10 @@ nunjucks.configure('email/templates', {
 transport.use('compile', (mail, callback) => {
 
   if(mail.data.template){
-    mail.data.html = nunjucks.render(`${mail.data.template}.njk`, mail.data.context);
+    mail.data.html = nunjucks.render(
+      `${mail.data.template}.njk`, 
+      mail.data.context
+    );
   }
   
   callback();

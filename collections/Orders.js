@@ -41,10 +41,17 @@ const Orders = {
       admin: { readOnly: true },
     },
     {
-      name: 'price',
-      type: 'number',
+      name: 'email',
+      type: 'text',
       required: true,
       admin: { readOnly: true },
+    },
+    {
+      name: 'price',
+      type: 'text',
+      required: true,
+      admin: { readOnly: true },
+      validate: () => true, // allow number value
     },
     {
       name: 'quantity',

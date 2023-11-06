@@ -5,12 +5,12 @@ const AdmZip = require("adm-zip");
 export default async function OrderCreated({ doc, req,  operation }) {
 
   if(operation !== 'create'){
-    //return;
+    return;
   }
 
   const zip = new AdmZip();
   const payload = req.payload;
-  const econf = payload.emailOptions;
+  const emailOpts = payload.emailOptions;
   const fabricData = JSON.parse(doc.json);
 
   const emailContext = {
@@ -56,8 +56,8 @@ export default async function OrderCreated({ doc, req,  operation }) {
 
   try {
     await payload.sendEmail({
-      from: `${econf.fromName} <${econf.fromAddress}>`,
-      to: econf.managerEmail,
+      from: `${emailOpts.fromName} <${emailOpts.fromAddress}>`,
+      to: [emailOpts.managerEmail, doc.email],
       subject: 'New order',
       template: 'order-created',
       context: emailContext,

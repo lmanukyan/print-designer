@@ -103,21 +103,33 @@
       <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-md">
           <div class="text-h6">
-            {{ $t('label.phone') }}
+            {{ $t('label.order') }}
           </div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
-        <q-card-section class="q-pt-none">
+        <q-card-section class="q-py-none">
           <q-input
             v-model="phone"
             mask="+7 (###) ###-##-##"
+            :label="$t('label.phone')"
             ref="phoneInput"
             fill-mask
             filled
             lazy-rules
             :disable="loading"
             :rules="[(val) => isValidPhone(val) || $t('text.error.emptyPhone')]"
+          />
+          <q-input
+            v-model="email"
+            type="email"
+            :label="$t('label.email')"
+            ref="emailInput"
+            fill-mask
+            filled
+            lazy-rules
+            :disable="loading"
+            :rules="[(val) => validateEmail(val) || $t('text.error.invalidEmail')]"
           />
           <span v-show="loading">
             {{ $t('text.orderBeingProcessed') }}
@@ -177,6 +189,7 @@ export default {
     orderCreatedModal: false,
     loading: false,
     phone: "",
+    email: "",
   }),
 
   watch: {
@@ -209,6 +222,10 @@ export default {
       return value.match(/[0-9]/g)?.length == 11;
     },
 
+    validateEmail(email) {
+      return /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(email);
+    },
+
     canOrder() {
       return (
         (!this.selectedModel.clientModel && this.quantity > 0) ||
@@ -239,6 +256,11 @@ export default {
         return;
       }
 
+      if (!this.validateEmail(this.email)) {
+        this.$refs.emailInput.validate();
+        return;
+      }
+
       this.loading = true;
 
       let captures = await CanvasService.capture();
@@ -247,6 +269,7 @@ export default {
         title: "Order №" + Date.now(),
         clientModel: this.selectedModel.clientModel,
         phone: this.phone,
+        email: this.email,
         price: this.price,
         quantity: this.quantityHtml(),
         front: captures.front.id,
@@ -262,6 +285,7 @@ export default {
         this.orderModal = false;
         this.orderCreatedModal = true;
         this.phone = "";
+        this.email = "";
       }
       this.loading = false;
     },

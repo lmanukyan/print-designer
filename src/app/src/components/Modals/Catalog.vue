@@ -14,7 +14,7 @@
 
       <q-card-section>
         <h4 class="text-center q-mt-lg">
-          {{  $t('label.selectModel') }}
+          {{ $t("label.selectModel") }}
         </h4>
         <div class="grid-4">
           <q-card
@@ -30,14 +30,14 @@
             </div>
             <q-card-actions align="center">
               <q-btn color="primary" @click="changeModel(model)">
-                {{ $t('label.select') }}
+                {{ $t("label.select") }}
               </q-btn>
               <q-btn
                 v-if="canDelete(model)"
                 @click="deleteModelById(model.id)"
                 color="negative"
               >
-                {{ $t('label.delete') }}
+                {{ $t("label.delete") }}
               </q-btn>
             </q-card-actions>
           </q-card>

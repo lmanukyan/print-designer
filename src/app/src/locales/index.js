@@ -1,28 +1,28 @@
-import { createI18n } from 'vue-i18n'
+import { createI18n } from "vue-i18n";
 
-import en from './translations/en'
-import ru from './translations/ru'
+import en from "./translations/en";
+import ru from "./translations/ru";
 
 export const locales = {
-    en,
-    ru
-}
+  en,
+  ru,
+};
 
 const getLanguage = () => {
-    const lang = localStorage.getItem('app_lang');
-    if (locales[lang]) {
-        return lang;
-    }
-    return 'en';
-}
+  const lang = localStorage.getItem("app_lang");
+  if (locales[lang]) {
+    return lang;
+  }
+  return "en";
+};
 
 export const syncLanguage = (lang) => {
-    localStorage.setItem('app_lang', lang);
-}
+  localStorage.setItem("app_lang", lang);
+};
 
 export const i18n = createI18n({
-    locale: getLanguage(),
-    messages: locales
-})
+  locale: getLanguage(),
+  messages: locales,
+});
 
-export const { t } = i18n.global
+export const { t } = i18n.global;

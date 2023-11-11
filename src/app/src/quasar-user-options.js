@@ -1,34 +1,33 @@
+import "./styles/quasar.sass";
+import "@quasar/extras/material-icons/material-icons.css";
 
-import './styles/quasar.sass'
-import '@quasar/extras/material-icons/material-icons.css'
+import { Notify } from "quasar";
 
-import { Notify } from 'quasar'
-
-Notify.registerType('error', {
-  color: 'negative',
-  icon: 'error'
+Notify.registerType("error", {
+  color: "negative",
+  icon: "error",
 });
 
-Notify.registerType('success', {
-  color: 'positive',
-  icon: 'check_circle'
+Notify.registerType("success", {
+  color: "positive",
+  icon: "check_circle",
 });
 
-Notify.registerType('orderSuccess', {
-  color: 'positive',
-  position: 'center'
+Notify.registerType("orderSuccess", {
+  color: "positive",
+  position: "center",
 });
 
 // To be used on app.use(Quasar, { ... })
 export default {
   plugins: {
-    Notify
+    Notify,
   },
   config: {
     notify: {
-      position: 'top-right',
+      position: "top-right",
       timeout: 2500,
-      progress: true
-    }
+      progress: true,
+    },
   },
-}
+};

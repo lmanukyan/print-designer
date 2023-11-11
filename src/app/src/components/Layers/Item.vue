@@ -17,7 +17,7 @@
 
     <q-item-section top>
       <q-item-label class="q-mt-sm" v-if="layer.layerType == 'image'">
-        {{ $t('label.image') }}
+        {{ $t("label.image") }}
       </q-item-label>
       <q-item-label class="q-mt-sm layer-title" v-else>{{
         layer.text

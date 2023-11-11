@@ -5,7 +5,7 @@
     </q-item-section>
 
     <q-item-section top class="gt-sm">
-      <q-item-label class="q-mt-sm">{{ $t('label.loading') }}</q-item-label>
+      <q-item-label class="q-mt-sm">{{ $t("label.loading") }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>

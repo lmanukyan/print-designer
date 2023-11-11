@@ -1,35 +1,33 @@
 export default {
-
   namespaced: true,
 
-  state () {
+  state() {
     return {
-      mode: 'front',
+      mode: "front",
       layers: [],
       selectedLayer: SelectedLayerInitialProps(),
-    }
+    };
   },
-  
+
   mutations: {
-    setMode (state, payload) {
-      state.mode = payload
+    setMode(state, payload) {
+      state.mode = payload;
     },
-    syncLayers (state, payload) {
-      console.log('syncLayers: ', payload);
-      state.layers = payload
-      this.dispatch('order/calculatePrice')
+    syncLayers(state, payload) {
+      console.log("syncLayers: ", payload);
+      state.layers = payload;
+      this.dispatch("order/calculatePrice");
     },
-    setSelectedLayer (state, payload) {
-      state.controlTab = 'object';
-      state.selectedLayer = payload
+    setSelectedLayer(state, payload) {
+      state.controlTab = "object";
+      state.selectedLayer = payload;
     },
-    resetSelectedLayer (state) {
-      state.controlTab = 'product';
-      state.selectedLayer = SelectedLayerInitialProps()
-    },    
+    resetSelectedLayer(state) {
+      state.controlTab = "product";
+      state.selectedLayer = SelectedLayerInitialProps();
+    },
   },
-  
-}
+};
 
 const SelectedLayerInitialProps = () => ({
   layerId: null,
@@ -37,12 +35,12 @@ const SelectedLayerInitialProps = () => ({
   text: null,
   fill: null,
   fontSize: null,
-  fontWeight: 'normal',
-  fontStyle: 'normal',
+  fontWeight: "normal",
+  fontStyle: "normal",
   underline: false,
   fontFamily: null,
   angle: 0,
   flipX: false,
   flipY: false,
-  scaleAndZoom: 0
+  scaleAndZoom: 0,
 });

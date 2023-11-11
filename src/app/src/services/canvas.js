@@ -1,6 +1,6 @@
 import { store } from "@/store";
 import { fabric } from "fabric";
-import { cloneProxy } from '../utils'; 
+import { cloneProxy } from "../utils";
 
 import MediaService from "@/services/media";
 
@@ -31,7 +31,7 @@ const CanvasService = {
         originX: "center",
         originY: "center",
         crossOrigin: "anonymous",
-      }
+      },
     );
     Context.canvas.renderAll();
   },
@@ -102,7 +102,7 @@ const CanvasService = {
       {
         globalCompositeOperation: "source-atop",
         crossOrigin: "anonymous",
-      }
+      },
     );
   },
 
@@ -159,7 +159,7 @@ const CanvasService = {
           this.selectedLayer.filters.push(new fabric.Image.filters[name]());
         } else {
           this.selectedLayer.filters = this.selectedLayer.filters.filter(
-            (f) => f.type != name
+            (f) => f.type != name,
           );
         }
         this.selectedLayer.applyFilters();
@@ -216,7 +216,7 @@ const CanvasService = {
                   resolve(blob);
                 },
                 "image/png",
-                1
+                1,
               );
           },
           {
@@ -229,7 +229,7 @@ const CanvasService = {
             originX: "center",
             originY: "center",
             crossOrigin: "anonymous",
-          }
+          },
         );
       });
     });

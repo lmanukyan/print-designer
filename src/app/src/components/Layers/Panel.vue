@@ -26,7 +26,9 @@
             </q-item-section>
 
             <q-item-section top>
-              <q-item-label class="q-mt-sm">{{ $t('label.image') }}</q-item-label>
+              <q-item-label class="q-mt-sm">{{
+                $t("label.image")
+              }}</q-item-label>
             </q-item-section>
 
             <q-item-section avatar side>

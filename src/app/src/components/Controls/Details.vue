@@ -14,7 +14,7 @@
             self="bottom middle"
             :offset="[10, 10]"
           >
-            {{ $t('label.centerVertically') }}
+            {{ $t("label.centerVertically") }}
           </q-tooltip>
         </q-btn>
         <q-btn
@@ -29,7 +29,7 @@
             self="bottom middle"
             :offset="[10, 10]"
           >
-            {{ $t('label.centerHorizontally') }}
+            {{ $t("label.centerHorizontally") }}
           </q-tooltip>
         </q-btn>
         <q-btn push icon="flip" @click="setBoolProp('flipX')" class="q-px-none">
@@ -39,7 +39,7 @@
             self="bottom middle"
             :offset="[10, 10]"
           >
-            {{ $t('label.flipHorizontally') }}
+            {{ $t("label.flipHorizontally") }}
           </q-tooltip>
         </q-btn>
         <q-btn
@@ -54,7 +54,7 @@
             self="bottom middle"
             :offset="[10, 10]"
           >
-            {{ $t('label.flipVertically') }}
+            {{ $t("label.flipVertically") }}
           </q-tooltip>
         </q-btn>
         <q-btn push icon="move_up" @click="bringToFront" class="q-px-none">
@@ -64,7 +64,7 @@
             self="bottom middle"
             :offset="[10, 10]"
           >
-            {{ $t('label.layerUp') }}
+            {{ $t("label.layerUp") }}
           </q-tooltip>
         </q-btn>
         <q-btn
@@ -79,13 +79,13 @@
             self="bottom middle"
             :offset="[10, 10]"
           >
-            {{ $t('label.layerDown') }}
+            {{ $t("label.layerDown") }}
           </q-tooltip>
         </q-btn>
       </q-btn-group>
 
       <p class="text-subtitle1 q-pt-md q-pb-md">
-        {{ $t('label.rotate') }}
+        {{ $t("label.rotate") }}
       </p>
       <div class="q-px-sm">
         <q-slider
@@ -105,24 +105,24 @@
           ]"
           color="primary"
         >
-        <template v-slot:marker-label-group="scope">
-          <div class="slider-markers">
-            <div
-              v-for="marker in scope.markerList"
-              :key="marker.index"
-              :class="`marker-${marker.value}`"
-              @click="selectedLayer.angle = marker.value"
-            >
-              {{ marker.value }}
+          <template v-slot:marker-label-group="scope">
+            <div class="slider-markers">
+              <div
+                v-for="marker in scope.markerList"
+                :key="marker.index"
+                :class="`marker-${marker.value}`"
+                @click="selectedLayer.angle = marker.value"
+              >
+                {{ marker.value }}
+              </div>
             </div>
-          </div>
-        </template>
+          </template>
         </q-slider>
       </div>
 
       <template v-if="selectedLayer.layerType == 'text'">
         <p class="text-subtitle1 q-pb-md">
-          {{ $t('label.size') }}
+          {{ $t("label.size") }}
         </p>
         <div class="q-px-sm">
           <q-slider
@@ -138,7 +138,7 @@
         </div>
 
         <p class="text-subtitle1">
-          {{ $t('label.text') }}
+          {{ $t("label.text") }}
         </p>
         <q-input
           filled
@@ -148,7 +148,7 @@
         />
 
         <p class="text-subtitle1 q-mt-md">
-          {{ $t('label.fontStyle') }}
+          {{ $t("label.fontStyle") }}
         </p>
         <q-btn-group push spread>
           <q-btn
@@ -172,7 +172,7 @@
         </q-btn-group>
 
         <p class="text-subtitle1 q-mt-md">
-          {{ $t('label.fontFamily') }}
+          {{ $t("label.fontFamily") }}
         </p>
         <q-select
           filled
@@ -197,12 +197,11 @@
           class="q-mt-md color-picker"
         />
       </template>
-
     </template>
 
     <template v-else>
       <p class="text-subtitle1">
-        {{ $t('text.selectObjectForCustomization') }}
+        {{ $t("text.selectObjectForCustomization") }}
       </p>
     </template>
   </div>
@@ -287,7 +286,7 @@ export default {
     getFontSize() {
       return (
         parseInt(
-          this.ctx.canvas.getActiveObject().scaleX * CanvasService.fontSize
+          this.ctx.canvas.getActiveObject().scaleX * CanvasService.fontSize,
         ) + "px"
       );
     },
@@ -306,28 +305,28 @@ export default {
   max-width: 100% !important;
 }
 .slider-markers {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    div {
-      position: relative;
-      cursor: pointer;
-      font-size: 11px;
-    }
-    .marker-0 {
-        left: -1px;
-    }
-    .marker-90 {
-        left: 7px;
-    }
-    .marker-180 {
-        left: 11px;
-    }
-    .marker-270 {
-        left: 11px;
-    }
-    .marker-360 {
-        left: 10px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  div {
+    position: relative;
+    cursor: pointer;
+    font-size: 11px;
+  }
+  .marker-0 {
+    left: -1px;
+  }
+  .marker-90 {
+    left: 7px;
+  }
+  .marker-180 {
+    left: 11px;
+  }
+  .marker-270 {
+    left: 11px;
+  }
+  .marker-360 {
+    left: 10px;
+  }
 }
 </style>

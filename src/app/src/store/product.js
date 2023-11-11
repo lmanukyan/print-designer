@@ -12,7 +12,7 @@ export default {
   mutations: {
     setModels(state, payload) {
       state.models = payload;
-      if(! state.selectedModel){
+      if (!state.selectedModel) {
         state.selectedModel = payload[0];
         state.selectedModelColor = state.selectedModel.images[0];
       }

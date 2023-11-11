@@ -2,10 +2,14 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated class="glossy">
       <q-toolbar class="bg-primary text-white">
-        <q-toolbar-title> Print Designer </q-toolbar-title>
+        <q-toolbar-title> Print Designer</q-toolbar-title>
         <div class="row items-center">
-
-          <q-btn color="accent" text-color="purple" :label="$i18n.locale" class="q-mr-sm">
+          <q-btn
+            color="accent"
+            text-color="purple"
+            :label="$i18n.locale"
+            class="q-mr-sm"
+          >
             <q-menu :offset="[0, 5]">
               <q-list style="min-width: 100px">
                 <q-item
@@ -19,25 +23,25 @@
                     {{ locale }}
                   </q-item-section>
                   <q-item-section v-if="locale === $i18n.locale">
-                      <q-icon name="done" color="purple" size="20px" />
+                    <q-icon name="done" color="purple" size="20px" />
                   </q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
           </q-btn>
 
-            <q-btn v-if="user" round>
-                <q-avatar round color="accent" text-color="purple">
-                 {{ user.name[0] }}
-                </q-avatar>
-                <q-menu :offset="[0, 5]">
-                    <q-list>
-                        <q-item clickable v-close-popup @click="logout">
-                            <q-item-section>{{ $t('label.logout') }}</q-item-section>
-                        </q-item>
-                    </q-list>
-                </q-menu>
-            </q-btn>
+          <q-btn v-if="user" round>
+            <q-avatar round color="accent" text-color="purple">
+              {{ user.name[0] }}
+            </q-avatar>
+            <q-menu :offset="[0, 5]">
+              <q-list>
+                <q-item clickable v-close-popup @click="logout">
+                  <q-item-section>{{ $t("label.logout") }}</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
 
           <q-btn
             v-else
@@ -47,8 +51,6 @@
             text-color="purple"
             :label="$t('label.login')"
           />
-
-
         </div>
       </q-toolbar>
     </q-header>
@@ -59,7 +61,7 @@
           <div class="col-md-3 col-sm-12 sm-full-width">
             <LayersPanel />
           </div>
-          <div class="col-md-6 col-sm-12 canvas-column ">
+          <div class="col-md-6 col-sm-12 canvas-column">
             <div class="canvas-designer">
               <ModeSelector />
               <div class="flex flex-center canvas-wrapper">
@@ -129,9 +131,8 @@ export default {
       selection: false,
       width: 600,
       height: 560,
-      allowTouchScrolling: true
+      allowTouchScrolling: true,
     });
-
 
     this.ctx.canvas.on("before:selection:cleared", () => {
       this.resetSelectedLayer();
@@ -146,8 +147,8 @@ export default {
       this.handleSelection(event);
     });
 
-    this.ctx.canvas.on('object:modified', (event) => {
-      if(event.action === 'scale' || event.action === 'rotate'){
+    this.ctx.canvas.on("object:modified", (event) => {
+      if (event.action === "scale" || event.action === "rotate") {
         this.selectedLayer.dirty = true;
       }
     });
@@ -158,7 +159,10 @@ export default {
     });
 
     document.addEventListener("keydown", (e) => {
-      if ( ["Delete", "Backspace"].includes(e.key) && this.selectedLayer.layerId) {
+      if (
+        ["Delete", "Backspace"].includes(e.key) &&
+        this.selectedLayer.layerId
+      ) {
         if (document.querySelector(".layer-text-field")?.matches(":focus"))
           return;
         CanvasService.removeLayer(this.selectedLayer);
@@ -191,9 +195,7 @@ export default {
       "setAuthModalOpened",
       "setCatalogModalOpened",
     ]),
-    ...mapMutations("order", [
-      "setPricing",
-    ]),
+    ...mapMutations("order", ["setPricing"]),
     ...mapMutations("canvas", [
       "syncLayers",
       "setSelectedLayer",
@@ -238,7 +240,7 @@ export default {
     setLanguage(lang) {
       this.$i18n.locale = lang;
       syncLanguage(lang);
-    }
+    },
   },
 };
 </script>
@@ -263,6 +265,7 @@ export default {
     margin-bottom: 30px;
   }
 }
+
 @media (max-width: $breakpoint-xs) {
   .canvas-wrapper {
     width: calc(100vw - 20px);

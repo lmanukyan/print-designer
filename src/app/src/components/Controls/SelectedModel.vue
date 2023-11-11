@@ -24,7 +24,7 @@
     </q-card-section>
 
     <q-card-section>
-      <p class="text-subtitle1">{{ $t('label.color') }}</p>
+      <p class="text-subtitle1">{{ $t("label.color") }}</p>
       <q-card-actions>
         <div
           v-for="image in selectedModel.images"
@@ -44,10 +44,12 @@
 
       <q-item tag="label">
         <q-item-section>
-          <q-item-label>{{ $t('label.price') }}</q-item-label>
+          <q-item-label>{{ $t("label.price") }}</q-item-label>
         </q-item-section>
         <q-item-section side>
-          <span class="text-bold">{{ price }} {{ !isNaN(Number(price)) ? '₽' : '' }}</span>
+          <span class="text-bold"
+            >{{ price }} {{ !isNaN(Number(price)) ? "₽" : "" }}</span
+          >
         </q-item-section>
       </q-item>
 
@@ -55,10 +57,10 @@
         <q-list separator dense class="q-pa-md">
           <q-item class="text-bold no-padding">
             <q-item-section>
-              {{ $t('label.size') }}
+              {{ $t("label.size") }}
             </q-item-section>
             <q-item-section class="q-mr-md text-right">
-              {{ $t('label.quantity') }}
+              {{ $t("label.quantity") }}
             </q-item-section>
           </q-item>
           <template v-for="size in selectedModel.sizes" :key="size">
@@ -78,7 +80,7 @@
           </template>
           <q-item class="text-bold no-padding">
             <q-item-section>
-              {{ $t('label.total') }}
+              {{ $t("label.total") }}
             </q-item-section>
             <q-item-section class="q-mr-md text-right">
               {{ quantity }}
@@ -103,7 +105,7 @@
       <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-md">
           <div class="text-h6">
-            {{ $t('label.order') }}
+            {{ $t("label.order") }}
           </div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
@@ -129,11 +131,13 @@
             filled
             lazy-rules
             :disable="loading"
-            :rules="[(val) => validateEmail(val) || $t('text.error.invalidEmail')]"
+            :rules="[
+              (val) => validateEmail(val) || $t('text.error.invalidEmail'),
+            ]"
           />
           <span v-show="loading">
-            {{ $t('text.orderBeingProcessed') }}
-            {{ $t('text.canTakeSometime') }}
+            {{ $t("text.orderBeingProcessed") }}
+            {{ $t("text.canTakeSometime") }}
           </span>
         </q-card-section>
         <q-card-actions align="right">
@@ -152,7 +156,7 @@
       <q-card style="min-width: 300px">
         <q-card-section class="row items-center q-pb-none">
           <div class="text-h6">
-            {{ $t('text.applicationAccepted') }}
+            {{ $t("text.applicationAccepted") }}
           </div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
@@ -162,9 +166,9 @@
             <q-btn round color="secondary" icon="done" />
           </div>
           <span class="text-body1">
-            {{ $t('text.thanksApplicationAccepted') }}
-            <br/> 
-            {{ $t('text.weWillContactYou') }}
+            {{ $t("text.thanksApplicationAccepted") }}
+            <br />
+            {{ $t("text.weWillContactYou") }}
           </span>
         </q-card-section>
       </q-card>

@@ -31,7 +31,10 @@
                     :label="$t('label.email')"
                     lazy-rules
                     :disable="loading"
-                    :rules="[(val) => validateEmail(val) || $t('text.error.invalidEmail')]"
+                    :rules="[
+                      (val) =>
+                        validateEmail(val) || $t('text.error.invalidEmail'),
+                    ]"
                   />
                   <q-input
                     v-model="password"
@@ -43,7 +46,8 @@
                     :disable="loading"
                     :rules="[
                       (val) =>
-                        (val && val.length > 5) || $t('text.error.shortPassword'),
+                        (val && val.length > 5) ||
+                        $t('text.error.shortPassword'),
                     ]"
                   />
                   <div class="justify-center row q-ml-none">
@@ -78,7 +82,10 @@
                     filled
                     :label="$t('label.email')"
                     lazy-rules
-                    :rules="[(val) => validateEmail(val) || $t('text.error.invalidEmail')]"
+                    :rules="[
+                      (val) =>
+                        validateEmail(val) || $t('text.error.invalidEmail'),
+                    ]"
                   />
                   <q-input
                     v-model="password"
@@ -89,7 +96,8 @@
                     lazy-rules
                     :rules="[
                       (val) =>
-                        (val && val.length > 5) || $t('text.error.shortPassword'),
+                        (val && val.length > 5) ||
+                        $t('text.error.shortPassword'),
                     ]"
                   />
                   <div class="justify-center row q-ml-none">
@@ -163,7 +171,7 @@ export default {
       let user = await UserService.register(
         this.name,
         this.email,
-        this.password
+        this.password,
       );
       if (user) {
         this.setUser(user);

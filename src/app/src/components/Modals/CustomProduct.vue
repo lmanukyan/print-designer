@@ -38,8 +38,10 @@
                   <q-item>
                     <q-item-section>
                       <q-item-label>
-                        {{ $t('label.frontSide') }}
-                        <span class="text-negative">({{ $t('label.required') }})</span>
+                        {{ $t("label.frontSide") }}
+                        <span class="text-negative"
+                          >({{ $t("label.required") }})</span
+                        >
                       </q-item-label>
                     </q-item-section>
                   </q-item>
@@ -61,7 +63,7 @@
                       @click="this.$refs.frontImage.click()"
                       color="secondary"
                     >
-                    {{ $t('label.select') }}
+                      {{ $t("label.select") }}
                     </q-btn>
                   </q-card-actions>
                 </q-card>
@@ -71,7 +73,7 @@
                   <q-item>
                     <q-item-section>
                       <q-item-label>
-                        {{ $t('label.backSide') }}
+                        {{ $t("label.backSide") }}
                       </q-item-label>
                     </q-item-section>
                   </q-item>
@@ -93,7 +95,7 @@
                       @click="this.$refs.backImage.click()"
                       color="secondary"
                     >
-                      {{ $t('label.select') }}
+                      {{ $t("label.select") }}
                     </q-btn>
                   </q-card-actions>
                 </q-card>

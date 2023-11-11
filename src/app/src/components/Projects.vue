@@ -49,7 +49,7 @@
       </template>
       <q-item v-show="!projects.length">
         <q-item-section>
-          {{ $t('text.notSavedProjects') }}
+          {{ $t("text.notSavedProjects") }}
         </q-item-section>
       </q-item>
       <q-separator v-show="projects.length" />
@@ -59,19 +59,14 @@
       <q-card>
         <q-card-section class="row items-center">
           <span class="q-ml-sm">
-            {{ $t('text.confirmDelete') }}
+            {{ $t("text.confirmDelete") }}
           </span>
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn 
-            flat 
-            :label="$t('label.no')" 
-            color="primary" 
-            v-close-popup 
-          />
+          <q-btn flat :label="$t('label.no')" color="primary" v-close-popup />
           <q-btn
             flat
-            :label="$t('label.yes')" 
+            :label="$t('label.yes')"
             color="primary"
             v-close-popup
             @click="deleteProjectAsync"
@@ -84,17 +79,17 @@
       <q-card style="min-width: 350px">
         <q-card-section class="row items-center">
           <span class="q-ml-sm">
-            {{ $t('text.projectName') }}
+            {{ $t("text.projectName") }}
           </span>
         </q-card-section>
         <q-card-section class="q-pt-none">
           <q-input dense v-model="title" autofocus @keyup.enter="saveAs" />
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn 
-            flat 
-            :label="$t('label.cancel')" 
-            color="primary" 
+          <q-btn
+            flat
+            :label="$t('label.cancel')"
+            color="primary"
             v-close-popup
           />
           <q-btn
@@ -111,12 +106,12 @@
 
   <template v-else>
     <p>
-      {{  $t('text.loginForProjects') }}
+      {{ $t("text.loginForProjects") }}
       <span
         @click="setAuthModalOpened(true)"
         class="text-primary cursor-pointer"
       >
-      {{  $t('label.login') }}
+        {{ $t("label.login") }}
       </span>
     </p>
   </template>

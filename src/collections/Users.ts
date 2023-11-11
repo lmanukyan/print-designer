@@ -1,6 +1,7 @@
+import { CollectionConfig } from 'payload/types'
 import { AdminAccess } from '../access'
 
-const Users = {
+const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {

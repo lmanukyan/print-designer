@@ -1,9 +1,10 @@
 import nunjucks from 'nunjucks';
 import OrderCreated from '../hooks/order-created'
+import { CollectionConfig } from 'payload/types'
 import { OwnerAccess } from '../access'
 import { AuthorField } from '../shared/fields'
 
-const Orders = {
+const Orders: CollectionConfig = {
   slug: 'orders',
   admin: {
     defaultColumns: ['title', 'phone', 'price', 'createdAt'],

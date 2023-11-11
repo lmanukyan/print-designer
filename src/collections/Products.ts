@@ -1,7 +1,8 @@
+import { CollectionConfig } from 'payload/types'
 import { AuthorizedAccess, OwnerAccess } from '../access'
 import { PriceRangeField, AuthorField } from '../shared/fields'
 
-const Products = {
+const Products: CollectionConfig = {
   slug: 'products',
   admin: {
     defaultColumns: ['title'],

@@ -1,121 +1,42 @@
+# Payload Blank Template
 
-# Print designer
+A blank template for [Payload](https://github.com/payloadcms/payload) to help you get up and running quickly. This repo may have been created by running `npx create-payload-app@latest` and selecting the "blank" template or by cloning this template on [Payload Cloud](https://payloadcms.com/new/clone/blank).
 
-Конструктор одежды и футболок онлайн
+See the official [Examples Directory](https://github.com/payloadcms/payload/tree/main/examples) for details on how to use Payload in a variety of different ways.
 
-![website](https://github.com/lmanukyan/print-designer/blob/develop/screenshot.jpg?raw=true)
+## Development
 
-## Сайт проекта
+To spin up the project locally, follow these steps:
 
-[app.print-rtp.ru](https://app.print-rtp.ru/)
+1. First clone the repo
+1. Then `cd YOUR_PROJECT_REPO && cp .env.example .env`
+1. Next `yarn && yarn dev` (or `docker-compose up`, see [Docker](#docker))
+1. Now `open http://localhost:8000/admin` to access the admin panel
+1. Create your first admin user using the form on the page
 
-## База данных
+That's it! Changes made in `./src` will be reflected in your app.
 
-Для хранения записей используется [MongoDB](https://mongodb.com)
+### Docker
 
+Alternatively, you can use [Docker](https://www.docker.com) to spin up this project locally. To do so, follow these steps:
 
-## Подготовка к запуску
+1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
+1. Next run `docker-compose up`
+1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
 
-Клонировать проект
+That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 
-```bash
-  git clone https://github.com/lmanukyan/print-designer.git
-```
+## Production
 
-Перейти в каталог проекта
+To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
 
-```bash
-  cd print-designer
-```
+1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
+1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
 
-Создать .env файлы
+### Deployment
 
-```bash
-  cp .env.sample .env
-  cp app/.env.sample app/.env
-```
-```bash
-  # не забудьте заполнить файлы
-```
+The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
 
-Установить зависимости
+## Questions
 
-```bash
-  yarn install
-  (cd app && yarn install)
-```
-## Запустить локально
-
-Запустить сервер
-
-```bash
-  yarn dev
-```
-
-Запустить фронт
-
-```bash
-  cd app
-  yarn serve
-```
-
-
-## Переменные среды сервера
-
-`MONGODB_URI` - строка подключения MongoDB
-
-`PAYLOAD_SECRET` - секретный ключ 
-
-`PAYLOAD_DOMAIN` - адрес сайта
-
-`SMTP_HOST` - SMTP хост
-
-`SMTP_PORT` - SMTP порт
-
-`SMTP_USER` - SMTP логин
-
-`SMTP_PASS` - SMTP пароль
-
-`SMTP_NAME` - Имя отправителя
-
-`MANAGER_EMAIL` - Email адрес получателя
-
-## Переменные среды фронта
-
-`VUE_APP_API_URL` - адрес для api запросов 
-
-
-## Деплой
-
-Сборка фронта
-
-```bash
-  (cd app && yarn build)
-```
-
-Запуск фронта DEV
-
-```bash
-  yarn serve
-  # localhot:3040
-```
-
-Сборка сервера
-
-```bash
-  yarn build
-```
-
-Запуск сервера
-
-```bash
-  yarn serve
-  # Админка будет доступен по адресу
-  # localhost:3050/admin
-```
-
-Запуск сервера через pm2
-
-```bash
-  NODE_ENV=production && pm2 start server.js
-```
+If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).

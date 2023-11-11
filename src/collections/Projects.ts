@@ -1,7 +1,8 @@
+import { CollectionConfig } from 'payload/types'
 import { AuthorizedAccess, OwnerAccess } from '../access'
 import { AuthorField } from '../shared/fields'
 
-const Projects = {
+const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     defaultColumns: ['title'],

@@ -1,7 +1,8 @@
+import { CollectionConfig } from 'payload/types'
 import { OwnerAccess } from '../access'
 import { AuthorField } from '../shared/fields'
 
-const Media = {
+const Media: CollectionConfig = {
   slug: 'media',
   access: {
     create: () => true,

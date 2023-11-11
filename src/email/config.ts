@@ -1,5 +1,5 @@
-const nodemailer = require('nodemailer');
-const nunjucks = require('nunjucks');
+import nodemailer from 'nodemailer'
+import nunjucks from 'nunjucks'
 
 // Email config
 const transport = nodemailer.createTransport({
@@ -9,7 +9,7 @@ const transport = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
   },
-  secure: process.env.SMTP_PORT == 465,
+  secure: parseInt(process.env.SMTP_PORT) === 465,
   tls: {
     rejectUnauthorized: false,
   },
@@ -31,4 +31,4 @@ transport.use('compile', (mail, callback) => {
   callback();
 })
 
-module.exports = transport;
+export default transport;

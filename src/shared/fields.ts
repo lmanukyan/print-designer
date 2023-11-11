@@ -1,4 +1,5 @@
-export const PriceRangeField = {
+import { Field } from 'payload/types'
+export const PriceRangeField: Field = {
   name: 'prices',
   type: 'array',
   fields: [
@@ -36,7 +37,7 @@ export const PriceRangeField = {
   ]
 }
 
-export const AuthorField = {
+export const AuthorField: Field = {
   name: 'author',
   type: 'relationship',
   relationTo: 'users',

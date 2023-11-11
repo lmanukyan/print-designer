@@ -1,6 +1,7 @@
+import { GlobalConfig } from 'payload/types'
 import { PriceRangeField } from '../shared/fields'
 
-const Pricing = {
+const Pricing: GlobalConfig = {
   slug: 'pricing',
   access: {
     read: () => true,

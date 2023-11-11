@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const AdmZip = require("adm-zip");
+import fs from 'fs';
+import path from 'path';
+import AdmZip from "adm-zip";
 
 export default async function OrderCreated({ doc, req,  operation }) {
 
@@ -57,7 +57,7 @@ export default async function OrderCreated({ doc, req,  operation }) {
   try {
     await payload.sendEmail({
       from: `${emailOpts.fromName} <${emailOpts.fromAddress}>`,
-      to: [emailOpts.managerEmail, doc.email],
+      to: [emailOpts.transportOptions.managerEmail, doc.email],
       subject: 'New order',
       template: 'order-created',
       context: emailContext,

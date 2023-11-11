@@ -65,5 +65,4 @@ export default {
       ObjectStorage.set('print-uploaded-images', state.uploadedImages);
     },
   },
-  
 }

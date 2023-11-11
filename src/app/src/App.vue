@@ -6,7 +6,7 @@
         <div class="row items-center">
 
           <q-btn color="accent" text-color="purple" :label="$i18n.locale" class="q-mr-sm">
-            <q-menu>
+            <q-menu :offset="[0, 5]">
               <q-list style="min-width: 100px">
                 <q-item
                   v-for="locale in $i18n.availableLocales"
@@ -26,18 +26,19 @@
             </q-menu>
           </q-btn>
 
-          <q-item clickable v-ripple v-if="user">
-            <q-avatar color="white" text-color="primary">
-              {{ user.name[0] }}
-            </q-avatar>
-            <q-menu>
-              <q-list style="min-width: 100px">
-                <q-item clickable v-close-popup @click="logout">
-                  <q-item-section>{{ $t('label.logout') }}</q-item-section>
-                </q-item>
-              </q-list>
-            </q-menu>
-          </q-item>
+            <q-btn v-if="user" round>
+                <q-avatar round color="accent" text-color="purple">
+                 {{ user.name[0] }}
+                </q-avatar>
+                <q-menu :offset="[0, 5]">
+                    <q-list>
+                        <q-item clickable v-close-popup @click="logout">
+                            <q-item-section>{{ $t('label.logout') }}</q-item-section>
+                        </q-item>
+                    </q-list>
+                </q-menu>
+            </q-btn>
+
           <q-btn
             v-else
             @click="setAuthModalOpened(true)"
@@ -46,6 +47,8 @@
             text-color="purple"
             :label="$t('label.login')"
           />
+
+
         </div>
       </q-toolbar>
     </q-header>
@@ -233,7 +236,7 @@ export default {
     },
 
     setLanguage(lang) {
-      this.$i18n.locale = lang; 
+      this.$i18n.locale = lang;
       syncLanguage(lang);
     }
   },

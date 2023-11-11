@@ -5,7 +5,7 @@
         <q-toolbar-title> Print Designer </q-toolbar-title>
         <div class="row items-center">
 
-          <q-btn color="white" text-color="black" :label="$i18n.locale" class="q-mr-sm">
+          <q-btn color="accent" text-color="purple" :label="$i18n.locale" class="q-mr-sm">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item 
@@ -19,7 +19,7 @@
                     {{ locale }}
                   </q-item-section>
                   <q-item-section v-if="locale == $i18n.locale">
-                      <q-icon name="done" color="black" size="20px" />
+                      <q-icon name="done" color="purple" size="20px" />
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -42,8 +42,8 @@
             v-else
             @click="setAuthModalOpened(true)"
             no-caps
-            color="white"
-            text-color="black"
+            color="accent"
+            text-color="purple"
             :label="$t('label.login')"
           />
         </div>

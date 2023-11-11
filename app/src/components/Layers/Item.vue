@@ -2,7 +2,7 @@
   <q-item
     @click="selectLayer(layer)"
     :active="layer.layerId == selectedLayer.layerId"
-    active-class="bg-teal-12 text-black-8 active-layer"
+    active-class="bg-accent text-black-8 active-layer"
     clickable
     v-ripple
   >
@@ -27,10 +27,10 @@
     <q-item-section avatar side>
       <div class="text-black-8 q-gutter-xs">
         <q-btn
+          class="text-secondary"
           size="12px"
           flat
           dense
-          round
           icon="content_copy"
           @click.stop="duplicateLayer(layer)"
         />

@@ -9,7 +9,7 @@
     <q-card class="bg-white text-black text-white">
       <q-bar class="bg-primary text-white">
         <q-space />
-        <q-btn dense flat icon="close" v-close-popup />
+        <q-btn dense flat icon="close" v-close-popup color="accent" />
       </q-bar>
 
       <q-card-section>
@@ -20,9 +20,9 @@
               <q-tab name="register" :label="$t('label.createAccount')" />
             </q-tabs>
 
-            <q-tab-panels v-model="tab" animated swipeable>
+            <q-tab-panels v-model="tab" animated swipeable class="q-pt-sm">
               <q-tab-panel name="login">
-                <q-form @submit="onLogin" class="q-gutter-md min-300">
+                <q-form @submit="onLogin" class="q-gutter-xs min-300">
                   <q-input
                     v-model="email"
                     type="email"
@@ -46,7 +46,7 @@
                         (val && val.length > 5) || $t('text.error.shortPassword'),
                     ]"
                   />
-                  <div class="q-ml-none">
+                  <div class="justify-center row q-ml-none">
                     <q-btn
                       :loading="loading"
                       :label="$t('label.login')"
@@ -57,7 +57,7 @@
                 </q-form>
               </q-tab-panel>
               <q-tab-panel name="register">
-                <q-form @submit="onRegsiter" class="q-gutter-md min-300">
+                <q-form @submit="onRegsiter" class="q-gutter-xs min-300">
                   <q-input
                     v-model="name"
                     type="text"
@@ -92,7 +92,7 @@
                         (val && val.length > 5) || $t('text.error.shortPassword'),
                     ]"
                   />
-                  <div class="q-ml-none">
+                  <div class="justify-center row q-ml-none">
                     <q-btn
                       :loading="loading"
                       :label="$t('label.register')"

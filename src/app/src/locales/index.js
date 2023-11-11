@@ -25,6 +25,4 @@ export const i18n = createI18n({
     messages: locales
 })
 
-console.log(i18n)
-
 export const { t } = i18n.global

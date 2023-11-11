@@ -8,17 +8,17 @@
           <q-btn color="accent" text-color="purple" :label="$i18n.locale" class="q-mr-sm">
             <q-menu>
               <q-list style="min-width: 100px">
-                <q-item 
-                  v-for="locale in $i18n.availableLocales" 
+                <q-item
+                  v-for="locale in $i18n.availableLocales"
                   :key="locale"
-                  clickable 
+                  clickable
                   v-close-popup
                   @click="setLanguage(locale)"
                 >
                   <q-item-section class="text-uppercase">
                     {{ locale }}
                   </q-item-section>
-                  <q-item-section v-if="locale == $i18n.locale">
+                  <q-item-section v-if="locale === $i18n.locale">
                       <q-icon name="done" color="purple" size="20px" />
                   </q-item-section>
                 </q-item>
@@ -155,7 +155,6 @@ export default {
     });
 
     document.addEventListener("keydown", (e) => {
-      console.log(e.key)
       if ( ["Delete", "Backspace"].includes(e.key) && this.selectedLayer.layerId) {
         if (document.querySelector(".layer-text-field")?.matches(":focus"))
           return;

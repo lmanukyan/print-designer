@@ -15,6 +15,7 @@ import Projects from './collections/Projects'
 import Pricing from "./globals/Pricing";
 
 export default buildConfig({
+  serverURL: process.env.PAYLOAD_DOMAIN,
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),

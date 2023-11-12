@@ -1,42 +1,116 @@
-# Payload Blank Template
+# Print Designer
 
-A blank template for [Payload](https://github.com/payloadcms/payload) to help you get up and running quickly. This repo may have been created by running `npx create-payload-app@latest` and selecting the "blank" template or by cloning this template on [Payload Cloud](https://payloadcms.com/new/clone/blank).
+Print Designer is open source project, which based on Payload CMS, Vue.js and Fabric.js
 
-See the official [Examples Directory](https://github.com/payloadcms/payload/tree/main/examples) for details on how to use Payload in a variety of different ways.
+## Demo
 
+https://app.print-rtp.ru/
+
+## Database
+For storing records is used [MongoDB](https://mongodb.com)
+
+## Installation
+
+Clone the project
+
+```bash
+git clone https://github.com/lmanukyan/print-designer.git
+cd print-designer
+```
+
+Create .env files
+
+```bash
+cp .env.example .env
+cp app/.env.example app/.env
+# do not forget fill the files
+```
+
+Installation of dependencies
+
+```bash
+yarn install
+(cd app && yarn install)
+```
 ## Development
 
-To spin up the project locally, follow these steps:
+Start the backend
 
-1. First clone the repo
-1. Then `cd YOUR_PROJECT_REPO && cp .env.example .env`
-1. Next `yarn && yarn dev` (or `docker-compose up`, see [Docker](#docker))
-1. Now `open http://localhost:8000/admin` to access the admin panel
-1. Create your first admin user using the form on the page
+```bash
+yarn dev
+# Admin panel is available on address
+# http://localhost:3050/admin
+```
 
-That's it! Changes made in `./src` will be reflected in your app.
+Start the frontend
 
-### Docker
+```bash
+cd app
+yarn serve
+# App is available on address
+# http://localhost:3040
+```
+## Environment Variables
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this project locally. To do so, follow these steps:
+Backend .env variables
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+`MONGODB_URI` - MongoDB connection string
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+`PAYLOAD_SECRET` - Payload secret key
 
-## Production
+`PAYLOAD_DOMAIN` - Site address
 
-To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
+`SMTP_HOST` - SMTP host
 
-1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
+`SMTP_PORT` - SMTP port
 
-### Deployment
+`SMTP_USER` - SMTP login
 
-The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
+`SMTP_PASS` - SMTP password
 
-## Questions
+`SMTP_NAME` - Sender name
 
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+`MANAGER_EMAIL` - Receiver email address
+
+
+Frontend .env variables
+
+`VUE_APP_API_URL` - Address for API requests
+
+## Deployment
+
+Build frontend
+
+```bash
+(cd app && yarn build)
+```
+
+Build backend
+
+```bash
+yarn build
+```
+
+Run backend via pm2
+
+```bash
+NODE_ENV=production && pm2 start server.js
+```
+
+Nginx config
+
+```bash
+server {
+  listen 80;
+  server_name _;
+  
+  location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:3050;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```

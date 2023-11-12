@@ -1,13 +1,13 @@
-import express from 'express'
-import payload from 'payload'
-import cors from 'cors';
-import dotenv from 'dotenv';
-dotenv.config()
-import transport from './email/config'
+import express from "express";
+import payload from "payload";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+import transport from "./email/config";
 
-const app = express()
-app.use(cors())
-app.use('/', express.static(__dirname + '/app/dist'));
+const app = express();
+app.use(cors());
+app.use(express.static(__dirname + "/app/dist"));
 
 const start = async () => {
   // Initialize Payload
@@ -21,14 +21,14 @@ const start = async () => {
       logMockCredentials: true,
       transportOptions: {
         managerEmail: process.env.MANAGER_EMAIL,
-      }
+      },
     },
     onInit: async () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
     },
-  })
+  });
 
-  app.listen(3050)
-}
+  app.listen(3050);
+};
 
-start()
+start();

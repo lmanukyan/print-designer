@@ -10,10 +10,9 @@ axiosInstance.interceptors.request.use(
     if (accessToken) {
       config.headers["Authorization"] = `JWT ${accessToken}`;
     }
-    config.headers["Content-Type"] = "application/json";
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
 export default axiosInstance;

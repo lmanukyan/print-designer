@@ -56,6 +56,7 @@ const UserService = {
   async logout() {
     await axios.post("users/logout");
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("appUser");
   },
 };
 

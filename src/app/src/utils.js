@@ -11,15 +11,14 @@ export const ComputedMutator = (module, name, setter) => ({
 });
 
 export const ObjectStorage = {
-  get: (key, deafultValue = {}) => {
-    let value = deafultValue;
+  get: (key, value = null) => {
     try {
       let parsedObject = JSON.parse(localStorage.getItem(key));
       if (typeof parsedObject === "object" && parsedObject !== null) {
         value = parsedObject;
       }
     } catch (e) {
-      //
+      value = null;
     }
     return value;
   },

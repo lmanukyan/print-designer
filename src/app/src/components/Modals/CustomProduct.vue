@@ -61,7 +61,9 @@
                     />
                     <q-btn
                       @click="this.$refs.frontImage.click()"
-                      color="secondary"
+                      color="accent"
+                      text-color="purple"
+                      no-caps
                     >
                       {{ $t("label.select") }}
                     </q-btn>
@@ -93,7 +95,9 @@
                     />
                     <q-btn
                       @click="this.$refs.backImage.click()"
-                      color="secondary"
+                      color="accent"
+                      text-color="purple"
+                      no-caps
                     >
                       {{ $t("label.select") }}
                     </q-btn>
@@ -108,6 +112,7 @@
                 :label="$t('label.create')"
                 type="submit"
                 color="primary"
+                no-caps
               />
             </div>
           </q-form>

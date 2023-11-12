@@ -61,10 +61,6 @@ export default {
   z-index: 9;
   top: 0;
 
-  img {
-    max-width: 60px;
-  }
-
   .selector-item {
     background: #fff;
     border: 2px solid $grey-4;
@@ -74,13 +70,18 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    @media (max-width: $breakpoint-sm) {
+      float: left;
+      margin-right: 10px;
+    }
 
     &.active {
       border-color: $primary;
     }
-    @media (max-width: $breakpoint-sm) {
-      float: left;
-      margin-right: 10px;
+
+    img {
+      max-width: 60px;
+      border-radius: inherit;
     }
   }
 }

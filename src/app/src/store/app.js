@@ -5,7 +5,7 @@ export default {
 
   state() {
     return {
-      user: null,
+      user: ObjectStorage.get("appUser"),
       projects: [],
       selectedProjectId: null,
       projectsFetched: false,
@@ -22,7 +22,11 @@ export default {
 
   mutations: {
     setUser(state, payload) {
-      state.user = payload;
+      state.user = {
+        id: payload.id,
+        name: payload.name,
+      };
+      ObjectStorage.set("appUser", state.user);
     },
     setProjects(state, payload) {
       state.projects = payload;
@@ -32,7 +36,7 @@ export default {
     },
     deleteProject(state, payload) {
       state.projects = state.projects.filter(
-        (project) => project.id != payload,
+        (project) => project.id != payload
       );
     },
     setSelectedProjectId(state, payload) {
@@ -59,7 +63,7 @@ export default {
     },
     removeUploadedImage(state, payload) {
       state.uploadedImages = state.uploadedImages.filter(
-        (image) => image.id != payload,
+        (image) => image.id != payload
       );
       ObjectStorage.set("print-uploaded-images", state.uploadedImages);
     },

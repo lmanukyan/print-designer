@@ -123,7 +123,7 @@ export default {
   },
 
   mounted() {
-    this.loadProfile();
+    this.loadProductModels(this.user?.id);
     this.loadPricing();
 
     const ref = this.$refs.canvas;
@@ -208,15 +208,6 @@ export default {
       if (this.selectedLayer.layerId != layer.layerId) {
         this.setSelectedLayer(layer);
         this.setControlTab("object");
-      }
-    },
-
-    async loadProfile() {
-      let user = await UserService.getProfile();
-      if (user) {
-        this.setUser(user);
-      } else {
-        await this.loadProductModels(null);
       }
     },
 

@@ -29,7 +29,7 @@
               <img :src="model.images[0].front.url" />
             </div>
             <q-card-actions align="center">
-              <q-btn color="primary" @click="changeModel(model)">
+              <q-btn no-caps color="primary" @click="changeModel(model)">
                 {{ $t("label.select") }}
               </q-btn>
               <q-btn

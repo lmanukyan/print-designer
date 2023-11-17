@@ -2,6 +2,8 @@
 
 Print Designer is open source project, which based on Payload CMS, Vue.js and Fabric.js
 
+![website](https://github.com/lmanukyan/print-designer/blob/develop/screenshot.jpg?raw=true)
+
 ## Demo
 
 https://app.print-rtp.ru/

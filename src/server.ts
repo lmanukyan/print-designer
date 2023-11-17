@@ -7,7 +7,7 @@ import transport from "./email/config";
 
 const app = express();
 app.use(cors());
-app.use(express.static(__dirname + "/app/dist"));
+app.use("/", express.static(__dirname + "/app/dist"));
 
 const start = async () => {
   // Initialize Payload

@@ -8,10 +8,9 @@
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
-    "build": "yarn copyfiles && yarn build:payload && yarn build:server && yarn copyApp",
+    "build": "yarn copyfiles && yarn build:payload && yarn build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
-    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,ico}\" dist/",
-    "copyApp": "rm -rf dist/app && mkdir -p dist/app/dist && cp -a src/app/dist dist/app",
+    "copyfiles": "copyfiles -e 'src/app/**' -u 1 'src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,ico}' dist/ && copyfiles -u 1 'src/app/dist/**' dist/",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema",
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload"

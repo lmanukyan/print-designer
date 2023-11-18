@@ -32,7 +32,7 @@ Installation of dependencies
 
 ```bash
 yarn install
-(cd src/app && yarn install)
+yarn install:app
 ```
 ## Development
 
@@ -47,8 +47,7 @@ yarn dev
 Start the frontend
 
 ```bash
-cd src/app
-yarn serve
+yarn dev:app
 # App is available on address
 # http://localhost:3040
 ```
@@ -81,13 +80,7 @@ Frontend .env variables
 
 ## Deployment
 
-Build frontend
-
-```bash
-(cd src/app && yarn build)
-```
-
-Build backend
+Build server & app
 
 ```bash
 yarn build

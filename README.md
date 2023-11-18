@@ -24,7 +24,7 @@ Create .env files
 
 ```bash
 cp .env.example .env
-cp app/.env.example app/.env
+cp src/app/.env.example src/app/.env
 # do not forget fill the files
 ```
 
@@ -32,7 +32,7 @@ Installation of dependencies
 
 ```bash
 yarn install
-(cd app && yarn install)
+(cd src/app && yarn install)
 ```
 ## Development
 
@@ -47,7 +47,7 @@ yarn dev
 Start the frontend
 
 ```bash
-cd app
+cd src/app
 yarn serve
 # App is available on address
 # http://localhost:3040
@@ -84,7 +84,7 @@ Frontend .env variables
 Build frontend
 
 ```bash
-(cd app && yarn build)
+(cd src/app && yarn build)
 ```
 
 Build backend

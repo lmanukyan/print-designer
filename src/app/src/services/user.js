@@ -54,7 +54,11 @@ const UserService = {
   },
 
   async logout() {
-    await axios.post("users/logout");
+    try {
+      await axios.post("users/logout");
+    } catch (e) {
+      //
+    }
     localStorage.removeItem("accessToken");
     localStorage.removeItem("appUser");
   },

@@ -20,12 +20,11 @@ git clone https://github.com/lmanukyan/print-designer.git
 cd print-designer
 ```
 
-Create .env files
+Create .env file
 
 ```bash
 cp .env.example .env
-cp src/app/.env.example src/app/.env
-# do not forget fill the files
+# do not forget fill the file
 ```
 
 Installation of dependencies
@@ -80,7 +79,7 @@ Frontend .env variables
 
 ## Deployment
 
-Build server & app
+Build backend & frontend
 
 ```bash
 yarn build
